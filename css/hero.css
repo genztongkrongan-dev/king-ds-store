@@ -1,0 +1,215 @@
+/* =========================
+   HERO SECTION BARU
+========================= */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 150px 80px 90px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 78% 38%, rgba(0, 132, 255, 0.18), transparent 24%),
+        radial-gradient(circle at 22% 20%, rgba(0, 132, 255, 0.08), transparent 20%),
+        linear-gradient(135deg, #05070d 0%, #07101d 45%, #05070d 100%);
+}
+
+/* Garis ornamen kiri */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 240px;
+    height: 300px;
+    border-top: 2px solid rgba(0, 132, 255, 0.4);
+    border-left: 2px solid rgba(0, 132, 255, 0.25);
+    clip-path: polygon(0 0, 100% 0, 55% 45%, 55% 100%, 0 100%);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Garis ornamen kanan */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 120px;
+    right: 0;
+    width: 300px;
+    height: 320px;
+    border-top: 2px solid rgba(0, 132, 255, 0.5);
+    border-right: 2px solid rgba(0, 132, 255, 0.35);
+    clip-path: polygon(45% 0, 100% 0, 100% 100%, 0 100%, 0 55%);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1300px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* KIRI */
+.hero-content {
+    flex: 1;
+    max-width: 620px;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-subtitle {
+    color: #1ea0ff;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-size: 72px;
+    line-height: 1.03;
+    font-weight: 900;
+    margin-bottom: 24px;
+    color: #ffffff;
+}
+
+.hero-title span {
+    color: #4da3ff;
+    text-shadow: 0 0 16px rgba(77, 163, 255, 0.7);
+}
+
+.hero-description {
+    max-width: 620px;
+    color: #d5d9e0;
+    font-size: 18px;
+    line-height: 1.9;
+    margin-bottom: 34px;
+}
+
+/* Tombol */
+.hero-buttons {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 42px;
+    flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 14px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 210px;
+    font-size: 17px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00a2ff, #1f6fff);
+    color: white;
+    box-shadow: 0 0 24px rgba(0, 132, 255, 0.35);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(0, 132, 255, 0.55);
+}
+
+.btn-secondary {
+    border: 1px solid rgba(0, 132, 255, 0.65);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 132, 255, 0.12);
+    transform: translateY(-3px);
+}
+
+/* Statistik */
+.hero-stats {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(77, 163, 255, 0.18);
+    padding: 20px 24px;
+    border-radius: 18px;
+    min-width: 165px;
+    backdrop-filter: blur(8px);
+    transition: 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-4px);
+    border-color: rgba(77, 163, 255, 0.45);
+    box-shadow: 0 0 25px rgba(77, 163, 255, 0.12);
+}
+
+.stat-box h3 {
+    color: #4da3ff;
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.stat-box p {
+    color: #d8d8d8;
+    font-size: 14px;
+}
+
+/* KANAN */
+.hero-image {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 700px;
+}
+
+/* glow belakang karakter */
+.hero-glow {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 132, 255, 0.32) 0%, rgba(0, 132, 255, 0.12) 35%, rgba(0, 132, 255, 0) 70%);
+    filter: blur(20px);
+    z-index: 1;
+}
+
+.hero-image img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 560px;
+    filter: drop-shadow(0 0 35px rgba(0, 132, 255, 0.35));
+    animation: floatHero 4s ease-in-out infinite;
+}
+
+/* animasi */
+@keyframes floatHero {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
