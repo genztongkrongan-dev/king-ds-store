@@ -2442,3 +2442,687 @@ footer{
     .shape-2{ top: 10%; right: 8%; }
     .shape-7{ top: 22%; right: 18%; }
 }
+/* =========================================================
+   KING DS STORE - RESPONSIVE LAYOUT PATCH
+   Fokus:
+   - mobile hero/banner lebih horizontal
+   - fitur 1 baris di mobile (horizontal scroll)
+   - produk/premium/services jadi 1 kolom di mobile
+   - testimonial 1 baris per kategori
+   - FAQ lebih ramping
+   - kontak 3 ke bawah
+   - footer baru
+   - nav mobile tidak transparan
+   - payment modal QRIS / DANA / BRI
+========================================================= */
+
+/* =========================
+   GLOBAL CONTAINER PATCH
+========================= */
+.hero-container,
+.features-container,
+.products-container,
+.premium-panels,
+.services-container,
+.payments-container,
+.testimonial-groups,
+.faq-container,
+.contact-container,
+.footer-container {
+    width: min(1200px, calc(100% - 32px));
+    margin-inline: auto;
+}
+
+/* =========================
+   HERO / BANNER
+========================= */
+.hero {
+    overflow: hidden;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 32px;
+    min-height: auto;
+    padding: 110px 0 70px;
+}
+
+.hero-content {
+    min-width: 0;
+}
+
+.hero-title {
+    line-height: 1.08;
+}
+
+.hero-description {
+    max-width: 640px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.hero-image {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 470px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* =========================
+   FEATURES
+========================= */
+.features {
+    overflow: hidden;
+}
+
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.feature-card {
+    min-width: 0;
+    height: 100%;
+}
+
+/* =========================
+   PRODUK POPULER
+========================= */
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.product-card {
+    min-width: 0;
+    height: 100%;
+}
+
+/* =========================
+   PREMIUM APPS
+========================= */
+.premium-panel.active {
+    display: block;
+}
+
+.premium-panel .premium-grid,
+.premium-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.premium-card {
+    min-width: 0;
+    height: 100%;
+}
+
+/* =========================
+   SERVICES
+========================= */
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.service-card {
+    min-width: 0;
+    height: 100%;
+}
+
+/* =========================
+   TESTIMONIALS
+========================= */
+.testimonial-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.testimonial-group {
+    width: 100%;
+}
+
+.testimonial-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+
+.testimonial-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    align-items: stretch;
+}
+
+.testimonial-gallery img {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 18px;
+    display: block;
+}
+
+/* =========================
+   FAQ LEBIH RAMPING
+========================= */
+.faq-container {
+    max-width: 920px;
+}
+
+.faq-item {
+    margin-bottom: 12px;
+    border-radius: 18px;
+}
+
+.faq-question {
+    padding: 16px 18px;
+    font-size: 15px;
+}
+
+.faq-answer {
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.faq-answer p {
+    padding: 0 18px 18px;
+}
+
+/* =========================
+   CONTACT
+========================= */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.contact-card,
+.contact-box {
+    min-width: 0;
+}
+
+.contact-card h3,
+.contact-box h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* =========================
+   FOOTER BARU
+========================= */
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.footer-top-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.8fr 0.9fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.footer-brand img {
+    max-width: 72px;
+    height: auto;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li + li {
+    margin-top: 10px;
+}
+
+.footer-payment-row {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 18px;
+}
+
+.footer-payment-row h4 {
+    margin-bottom: 12px;
+}
+
+.footer-payment-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.footer-payment-list span {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    font-size: 14px;
+}
+
+/* =========================
+   NAV MENU MOBILE TIDAK TRANSPARAN
+========================= */
+@media (max-width: 768px) {
+    .nav-menu,
+    .navbar .nav-menu,
+    #navMenu {
+        background: #07101d !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+        border: 1px solid rgba(255,255,255,0.08);
+    }
+}
+
+/* =========================
+   PAYMENT DETAIL IN ORDER MODAL
+========================= */
+.payment-detail-box {
+    display: none;
+    margin-top: 14px;
+    padding: 16px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.payment-detail-box.active {
+    display: block;
+}
+
+.payment-detail-item {
+    display: none;
+}
+
+.payment-detail-item.active {
+    display: block;
+}
+
+.payment-detail-item h4 {
+    margin: 0 0 8px;
+}
+
+.payment-detail-item p {
+    margin: 0 0 12px;
+}
+
+.modal-qris-box {
+    width: 100%;
+    max-width: 260px;
+    margin-top: 10px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff;
+    padding: 10px;
+}
+
+.modal-qris-box img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 1100px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 28px;
+        padding-top: 110px;
+    }
+
+    .hero-description {
+        max-width: 760px;
+        margin-inline: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-stats {
+        max-width: 760px;
+        margin-inline: auto;
+    }
+
+    .hero-image img {
+        max-width: 420px;
+    }
+
+    .features-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .products-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .premium-panel .premium-grid,
+    .premium-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .services-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .footer-top-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+    .hero-container,
+    .features-container,
+    .products-container,
+    .premium-panels,
+    .services-container,
+    .testimonial-groups,
+    .faq-container,
+    .contact-container,
+    .footer-container {
+        width: min(100%, calc(100% - 20px));
+    }
+
+    /* HERO BANNER MOBILE
+       dibuat lebih horizontal, bukan memanjang ke bawah */
+    .hero {
+        padding-bottom: 10px;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 96px 0 32px;
+    }
+
+    .hero-content {
+        order: 1;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: clamp(28px, 7vw, 38px);
+        line-height: 1.1;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        max-width: 100%;
+        margin-inline: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .hero-buttons a {
+        flex: 1 1 calc(50% - 10px);
+        min-width: 140px;
+    }
+
+    .hero-stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 18px;
+    }
+
+    .stat-box {
+        padding: 14px 10px;
+    }
+
+    .stat-box h3 {
+        font-size: 18px;
+    }
+
+    .stat-box p {
+        font-size: 12px;
+    }
+
+    .hero-image {
+        order: 2;
+        width: 100%;
+    }
+
+    .hero-image img {
+        max-width: 260px;
+        width: 100%;
+        margin-inline: auto;
+    }
+
+    /* FITUR 1 BARIS HORIZONTAL */
+    .features {
+        overflow: hidden;
+        padding-top: 10px;
+    }
+
+    .features-container {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 8px;
+        scroll-snap-type: x mandatory;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .features-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .feature-card {
+        flex: 0 0 78%;
+        scroll-snap-align: start;
+        min-width: 250px;
+    }
+
+    /* PRODUK POPULER 3 KE BAWAH / 1 KOLOM */
+    .products-container {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    /* PREMIUM APPS 1 KOLOM */
+    .premium-panel .premium-grid,
+    .premium-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    /* LAYANAN 1 KOLOM */
+    .services-container {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    /* TESTIMONI SEJAJAR 1 BARIS */
+    .testimonial-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .testimonial-gallery {
+        display: flex;
+        overflow-x: auto;
+        gap: 12px;
+        scroll-snap-type: x mandatory;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        padding-bottom: 6px;
+    }
+
+    .testimonial-gallery::-webkit-scrollbar {
+        display: none;
+    }
+
+    .testimonial-gallery img {
+        flex: 0 0 78%;
+        max-width: 260px;
+        scroll-snap-align: start;
+    }
+
+    /* FAQ RAMPING */
+    .faq-container {
+        width: min(100%, calc(100% - 24px));
+    }
+
+    .faq-question {
+        padding: 14px 15px;
+        font-size: 14px;
+    }
+
+    .faq-answer p {
+        padding: 0 15px 15px;
+        font-size: 13px;
+    }
+
+    /* KONTAK 3 KE BAWAH */
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .contact-card {
+        padding: 16px;
+    }
+
+    .contact-side {
+        gap: 12px;
+    }
+
+    /* FOOTER MOBILE */
+    .footer-top-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .footer-brand {
+        text-align: center;
+    }
+
+    .footer-brand img {
+        margin-inline: auto;
+    }
+
+    .footer-payment-list {
+        gap: 8px;
+    }
+
+    .footer-payment-list span {
+        font-size: 13px;
+        padding: 9px 12px;
+    }
+}
+
+/* =========================
+   EXTRA SMALL MOBILE
+========================= */
+@media (max-width: 480px) {
+    .hero-container {
+        padding-top: 90px;
+    }
+
+    .hero-title {
+        font-size: 26px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+    }
+
+    .hero-image img {
+        max-width: 220px;
+    }
+
+    .hero-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons a {
+        flex: 1 1 100%;
+    }
+
+    .feature-card {
+        flex-basis: 86%;
+    }
+
+    .testimonial-gallery img {
+        flex-basis: 82%;
+    }
+
+    .modal-qris-box {
+        max-width: 220px;
+    }
+}
