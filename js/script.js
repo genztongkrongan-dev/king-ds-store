@@ -1,4 +1,3 @@
-console.log("King DS Store Berhasil Dibuat");
 
 /* =========================================================
    KING DS STORE - MAIN SCRIPT
@@ -276,12 +275,44 @@ function initOrderModal() {
     const premiumOrderButtons = document.querySelectorAll(".premium-order-btn");
     const botOrderButtons = document.querySelectorAll(".bot-order-btn");
 
+    const paymentMethodSelect = document.getElementById("paymentMethod");
+    const paymentDetailBox = document.getElementById("paymentDetailBox");
+    const paymentDana = document.getElementById("paymentDana");
+    const paymentBri = document.getElementById("paymentBri");
+    const paymentQris = document.getElementById("paymentQris");
+
+    function hideAllPaymentDetails() {
+        if (paymentDana) paymentDana.classList.remove("active");
+        if (paymentBri) paymentBri.classList.remove("active");
+        if (paymentQris) paymentQris.classList.remove("active");
+        if (paymentDetailBox) paymentDetailBox.classList.remove("active");
+    }
+
+    function showPaymentDetail(method) {
+        hideAllPaymentDetails();
+
+        if (!method || !paymentDetailBox) return;
+
+        paymentDetailBox.classList.add("active");
+
+        if (method === "DANA" && paymentDana) {
+            paymentDana.classList.add("active");
+        } else if (method === "BRI" && paymentBri) {
+            paymentBri.classList.add("active");
+        } else if (method === "QRIS" && paymentQris) {
+            paymentQris.classList.add("active");
+        }
+    }
+
     function openOrderModal(productName, categoryName, priceText) {
         if (!orderModal) return;
 
         if (orderProductInput) orderProductInput.value = productName || "";
         if (orderCategoryInput) orderCategoryInput.value = categoryName || "";
         if (orderPriceInput) orderPriceInput.value = priceText || "";
+
+        if (paymentMethodSelect) paymentMethodSelect.value = "";
+        hideAllPaymentDetails();
 
         orderModal.classList.add("active");
         document.body.classList.add("modal-open");
@@ -291,6 +322,7 @@ function initOrderModal() {
         if (!orderModal) return;
         orderModal.classList.remove("active");
         document.body.classList.remove("modal-open");
+        hideAllPaymentDetails();
     }
 
     premiumOrderButtons.forEach(button => {
@@ -316,6 +348,12 @@ function initOrderModal() {
             openOrderModal(product, category, price);
         });
     });
+
+    if (paymentMethodSelect) {
+        paymentMethodSelect.addEventListener("change", function () {
+            showPaymentDetail(this.value);
+        });
+    }
 
     if (closeOrderModal) {
         closeOrderModal.addEventListener("click", closeOrderModalFunc);
@@ -347,6 +385,15 @@ function initOrderModal() {
                 return;
             }
 
+            let paymentInfo = "-";
+            if (paymentMethod === "DANA") {
+                paymentInfo = "DANA - 085143887892";
+            } else if (paymentMethod === "BRI") {
+                paymentInfo = "BRI - 6254 0102 7303 531";
+            } else if (paymentMethod === "QRIS") {
+                paymentInfo = "QRIS - Scan QRIS di form order";
+            }
+
             const waMessage = `Halo admin King DS Store, saya ingin order.
 
 *DATA PEMBELI*
@@ -359,6 +406,7 @@ Kategori: ${orderCategory}
 Varian/Paket: ${orderVariant}
 Harga: ${orderPrice}
 Metode Pembayaran: ${paymentMethod}
+Detail Pembayaran: ${paymentInfo}
 Catatan: ${orderNotes}
 
 Saya akan / sudah melakukan pembayaran. Mohon diproses ya admin.`;
@@ -375,348 +423,8 @@ Saya akan / sudah melakukan pembayaran. Mohon diproses ya admin.`;
         });
     }
 
-    // expose untuk ESC handler
     window.closeOrderModalFunc = closeOrderModalFunc;
 }
-
-/* =========================================================
-   AI FAQ MODAL
-========================================================= */
-function initAiFaqModal() {
-    const openAiFaqBtn = document.getElementById("openAiFaqBtn");
-    const aiFaqModal = document.getElementById("aiFaqModal");
-    const closeAiFaq = document.getElementById("closeAiFaq");
-    const aiFaqBody = document.getElementById("aiFaqBody");
-    const aiFaqInput = document.getElementById("aiFaqInput");
-    const sendAiFaq = document.getElementById("sendAiFaq");
-
-    function openAiFaqModal() {
-        if (!aiFaqModal) return;
-        aiFaqModal.classList.add("active");
-        document.body.classList.add("modal-open");
-        setTimeout(() => aiFaqInput?.focus(), 200);
-    }
-
-    function closeAiFaqModal() {
-        if (!aiFaqModal) return;
-        aiFaqModal.classList.remove("active");
-        document.body.classList.remove("modal-open");
-    }
-
-    function addAiMessage(message, type = "bot") {
-        if (!aiFaqBody) return;
-
-        const messageDiv = document.createElement("div");
-        messageDiv.className = `ai-message ${type === "user" ? "ai-user" : "ai-bot"}`;
-        messageDiv.innerHTML = message.replace(/\n/g, "<br>");
-        aiFaqBody.appendChild(messageDiv);
-        aiFaqBody.scrollTop = aiFaqBody.scrollHeight;
-    }
-
-    function getAiFaqResponse(userText) {
-        const text = userText.toLowerCase().trim();
-
-        // sapaan
-        if (
-            text.includes("halo") ||
-            text.includes("hai") ||
-            text.includes("hi") ||
-            text === "p" ||
-            text === "permisi"
-        ) {
-            return `Halo juga 👋
-Selamat datang di King DS Store.
-Saya bisa bantu jawab pertanyaan seputar:
-- cara order
-- metode pembayaran
-- premium apps
-- jasa edit
-- starlight
-- bot WhatsApp`;
-        }
-
-        // cara order
-        if (
-            text.includes("cara order") ||
-            text.includes("gimana order") ||
-            text.includes("bagaimana order") ||
-            text.includes("cara pesan") ||
-            text.includes("pesan produk")
-        ) {
-            return `Cara order di King DS Store:
-1. Pilih produk / layanan yang diinginkan
-2. Klik tombol Order
-3. Isi form pesanan
-4. Pilih metode pembayaran
-5. Lanjutkan konfirmasi ke WhatsApp admin
-
-Untuk jasa edit video dan Starlight, order langsung lewat tombol WhatsApp.`;
-        }
-
-        // pembayaran
-        if (
-            text.includes("pembayaran") ||
-            text.includes("bayar") ||
-            text.includes("metode bayar") ||
-            text.includes("qris") ||
-            text.includes("dana") ||
-            text.includes("bri")
-        ) {
-            return `Metode pembayaran yang tersedia:
-- DANA: 085143887892
-- BRI: 6254 0102 7303 531
-- QRIS DANA tersedia di website
-
-Setelah bayar, lanjutkan konfirmasi ke WhatsApp admin agar pesanan diproses.`;
-        }
-
-        // seller / buyer
-        if (
-            text.includes("akun seller") ||
-            text.includes("seller") ||
-            text.includes("akun buyer") ||
-            text.includes("buyer")
-        ) {
-            return `Penjelasan singkat:
-- Akun seller = akun disediakan oleh admin / penjual
-- Akun buyer = memakai akun milik pembeli sendiri
-
-Setiap produk bisa punya ketentuan berbeda, jadi cek keterangan produk atau tanyakan admin saat order.`;
-        }
-
-        // stok
-        if (
-            text.includes("stok") ||
-            text.includes("ready") ||
-            text.includes("tersedia")
-        ) {
-            return `Untuk stok produk tertentu, sebaiknya tanyakan admin terlebih dahulu melalui WhatsApp.
-Beberapa produk ready selalu, tapi ada juga yang menyesuaikan ketersediaan seller / slot.`;
-        }
-
-        // premium apps
-        if (
-            text.includes("premium") ||
-            text.includes("aplikasi") ||
-            text.includes("apps") ||
-            text.includes("canva") ||
-            text.includes("alight motion") ||
-            text.includes("capcut") ||
-            text.includes("spotify") ||
-            text.includes("netflix") ||
-            text.includes("youtube") ||
-            text.includes("chatgpt") ||
-            text.includes("gemini") ||
-            text.includes("grok")
-        ) {
-            return `King DS Store menyediakan berbagai premium apps seperti:
-- Canva Pro
-- Alight Motion
-- CapCut Pro
-- Lightroom
-- Netflix
-- Spotify
-- YouTube Premium
-- ChatGPT / Gemini / Grok
-dan lainnya.
-
-Silakan buka bagian Premium Apps di website lalu klik tombol Order pada produk yang diinginkan.`;
-        }
-
-        // jasa edit
-        if (
-            text.includes("edit") ||
-            text.includes("jasa edit") ||
-            text.includes("video")
-        ) {
-            return `Jasa edit video tersedia mulai Rp2.000 - Rp20.000 / video.
-Harga menyesuaikan tingkat kesulitan edit, durasi, dan kebutuhan konten.
-
-Untuk jasa edit, silakan langsung klik tombol "Chat Admin" pada bagian layanan Jasa Edit Video.`;
-        }
-
-        // starlight
-        if (
-            text.includes("starlight") ||
-            text.includes("ml") ||
-            text.includes("mobile legends")
-        ) {
-            return `Harga Starlight saat ini:
-- Starlight Member: Rp35.000
-- Starlight Premium: Rp55.000
-
-Untuk pemesanan Starlight, silakan klik tombol WhatsApp pada bagian layanan Starlight Mobile Legends.`;
-        }
-
-        // bot whatsapp
-        if (
-            text.includes("bot wa") ||
-            text.includes("bot whatsapp") ||
-            text.includes("sewa bot") ||
-            text.includes("premium user")
-        ) {
-            return `Layanan Bot WhatsApp:
-- Sewa bot 1 bulan biasa — Rp15.000
-- Sewa bot 1 bulan + 1 user prem — Rp20.000
-- Sewa bot 1 bulan + premium grup — Rp40.000
-- Premium user limit 1 nomor — Rp5.000
-- Premium user limit 2 nomor — Rp10.000
-
-Untuk bot WA, Anda bisa klik tombol Order Bot WA di website.`;
-        }
-
-        // coming soon
-        if (
-            text.includes("joki") ||
-            text.includes("top up")
-        ) {
-            return `Untuk saat ini:
-- Joki Rank = Coming Soon
-- Top Up Game = Coming Soon
-
-Nanti akan dibuka kembali setelah ada update dari King DS Store.`;
-        }
-
-        // kontak
-        if (
-            text.includes("kontak") ||
-            text.includes("wa admin") ||
-            text.includes("nomor admin") ||
-            text.includes("whatsapp admin")
-        ) {
-            return `Kontak admin King DS Store:
-WhatsApp: 085143887892
-Email: topdragonfly15@gmail.com
-
-Anda juga bisa langsung klik tombol WhatsApp di website untuk chat admin.`;
-        }
-
-        return `Maaf, saya belum paham pertanyaan itu sepenuhnya 🙏
-
-Coba gunakan kata kunci seperti:
-- cara order
-- pembayaran
-- premium apps
-- jasa edit
-- starlight
-- bot whatsapp
-- akun seller / buyer
-
-Atau langsung hubungi admin via WhatsApp untuk pertanyaan yang lebih spesifik.`;
-    }
-
-    function handleAiFaqSend() {
-        const text = aiFaqInput?.value.trim();
-        if (!text) return;
-
-        addAiMessage(text, "user");
-        aiFaqInput.value = "";
-
-        setTimeout(() => {
-            const response = getAiFaqResponse(text);
-            addAiMessage(response, "bot");
-        }, 350);
-    }
-
-    // tombol buka AI FAQ manual (kalau ada)
-    if (openAiFaqBtn) {
-        openAiFaqBtn.addEventListener("click", openAiFaqModal);
-    }
-
-    // tombol close modal AI
-    if (closeAiFaq) {
-        closeAiFaq.addEventListener("click", closeAiFaqModal);
-    }
-
-    // klik area gelap luar modal -> tutup
-    if (aiFaqModal) {
-        aiFaqModal.addEventListener("click", e => {
-            if (e.target === aiFaqModal) {
-                closeAiFaqModal();
-            }
-        });
-    }
-
-    // tombol kirim
-    if (sendAiFaq) {
-        sendAiFaq.addEventListener("click", handleAiFaqSend);
-    }
-
-    // enter untuk kirim
-    if (aiFaqInput) {
-        aiFaqInput.addEventListener("keydown", e => {
-            if (e.key === "Enter") {
-                e.preventDefault();
-                handleAiFaqSend();
-            }
-        });
-    }
-
-    // pesan pembuka default saat modal dibuka pertama kali
-    if (aiFaqBody && aiFaqBody.children.length === 0) {
-        addAiMessage(`Halo, saya AI Assistant King DS Store 👋
-Silakan tanya apa saja seputar produk, pembayaran, cara order, premium apps, bot WhatsApp, atau jasa edit.`, "bot");
-    }
-
-    // expose untuk ESC handler
-    window.closeAiFaqModal = closeAiFaqModal;
-}
-
-/* =========================================================
-   ESC CLOSE MODAL
-========================================================= */
-function initEscClose() {
-    document.addEventListener("keydown", e => {
-        if (e.key !== "Escape") return;
-
-        if (typeof window.closeOrderModalFunc === "function") {
-            window.closeOrderModalFunc();
-        }
-
-        if (typeof window.closeAiFaqModal === "function") {
-            window.closeAiFaqModal();
-        }
-
-        const menuToggle = document.getElementById("menuToggle");
-        const navMenu = document.getElementById("navMenu");
-
-        if (menuToggle && navMenu && navMenu.classList.contains("active")) {
-            menuToggle.classList.remove("active");
-            navMenu.classList.remove("active");
-            document.body.classList.remove("menu-open");
-        }
-    });
-}
-
-/* =========================================================
-   SMOOTH SCROLL NAV LINK
-========================================================= */
-function initSmoothScroll() {
-    const allNavAnchors = document.querySelectorAll('a[href^="#"]');
-    if (!allNavAnchors.length) return;
-
-    allNavAnchors.forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            const targetId = this.getAttribute("href");
-            if (!targetId || targetId === "#") return;
-
-            const targetEl = document.querySelector(targetId);
-            if (!targetEl) return;
-
-            e.preventDefault();
-
-            const headerOffset = 90;
-            const elementPosition = targetEl.getBoundingClientRect().top + window.pageYOffset;
-            const offsetPosition = elementPosition - headerOffset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
-        });
-    });
-}
-
 /* =========================================================
    REGENERATE RAIN ON RESIZE
 ========================================================= */
@@ -728,5 +436,39 @@ function initResizeRain() {
         resizeTimer = setTimeout(() => {
             initRainEffect();
         }, 250);
+    });
+}
+/* =========================
+   THEME TOGGLE (DARK / LIGHT)
+========================= */
+const themeToggle = document.getElementById("themeToggle");
+const themeToggleIcon = document.querySelector(".theme-toggle-icon");
+const themeToggleText = document.querySelector(".theme-toggle-text");
+
+function applyTheme(mode) {
+    if (mode === "light") {
+        document.body.classList.add("light-mode");
+        if (themeToggleIcon) themeToggleIcon.textContent = "☀️";
+        if (themeToggleText) themeToggleText.textContent = "Mode Siang";
+    } else {
+        document.body.classList.remove("light-mode");
+        if (themeToggleIcon) themeToggleIcon.textContent = "🌙";
+        if (themeToggleText) themeToggleText.textContent = "Mode Gelap";
+    }
+}
+
+const savedTheme = localStorage.getItem("kingds-theme");
+if (savedTheme === "light") {
+    applyTheme("light");
+} else {
+    applyTheme("dark");
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+        const isLight = document.body.classList.contains("light-mode");
+        const nextTheme = isLight ? "dark" : "light";
+        applyTheme(nextTheme);
+        localStorage.setItem("kingds-theme", nextTheme);
     });
 }
