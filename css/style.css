@@ -17,7 +17,7 @@
     --text-soft: #c4d3f5;
     --text-muted: #8ea4d8;
 
-    --white: #ffffff;
+    --white: #ffffff; /* teks/ikon di atas kartu gelap - otomatis berubah di light-mode */
     --black: #000000;
 
     --blue-1: #0f5bd8;
@@ -186,7 +186,7 @@ section{
     overflow: hidden;
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
-    background: linear-gradient(180deg, rgba(16,27,50,0.95), rgba(8,14,28,0.92));
+    background: linear-gradient(180deg, var(--bg-card), var(--bg-card-2));
     box-shadow:
         0 16px 34px rgba(0,0,0,0.28),
         inset 0 1px 0 rgba(255,255,255,0.05);
@@ -271,6 +271,45 @@ header{
     min-width: 0;
 }
 
+.logo-avatar{
+    position: relative;
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    animation: logoFloat 3.4s ease-in-out infinite, logoGlow 2.6s ease-in-out infinite;
+}
+
+.logo-avatar::after{
+    content: "";
+    position: absolute;
+    inset: -60% -60%;
+    background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.55) 48%, rgba(255,215,140,0.35) 52%, transparent 65%);
+    transform: translateX(-120%) rotate(8deg);
+    animation: logoShine 3.6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes logoFloat{
+    0%, 100%{ transform: translateY(0); }
+    50%{ transform: translateY(-4px); }
+}
+
+@keyframes logoGlow{
+    0%, 100%{
+        box-shadow: 0 0 14px rgba(0,140,255,0.28), 0 0 0 rgba(255,199,89,0);
+    }
+    50%{
+        box-shadow: 0 0 24px rgba(0,180,255,0.55), 0 0 16px rgba(255,199,89,0.3);
+    }
+}
+
+@keyframes logoShine{
+    0%, 15%{ transform: translateX(-120%) rotate(8deg); }
+    50%, 100%{ transform: translateX(120%) rotate(8deg); }
+}
+
 .logo img{
     width: 54px;
     height: 54px;
@@ -278,11 +317,237 @@ header{
     border-radius: 50%;
     border: 2px solid rgba(0,198,255,0.3);
     background: #0a1222;
-    box-shadow: 0 0 20px rgba(0,140,255,0.18);
+}
+
+/* =========================
+   BOTTOM NAVIGATION (khusus mobile)
+========================= */
+.bottom-nav{
+    display: none;
+}
+
+@media (max-width: 768px){
+    body{
+        padding-bottom: 64px;
+    }
+
+    .bottom-nav{
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1500;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 6px 6px calc(6px + env(safe-area-inset-bottom));
+        border-top: 1px solid var(--border);
+        background: var(--bg-card);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 -12px 30px rgba(0,0,0,0.3);
+    }
+
+    .bottom-nav-item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        padding: 6px 10px;
+        border-radius: 12px;
+        color: var(--text-soft);
+        font-size: 0.62rem;
+        font-weight: 700;
+        transition: var(--transition);
+    }
+
+    .bottom-nav-item svg{
+        width: 20px;
+        height: 20px;
+    }
+
+    .bottom-nav-item.active{
+        color: #ffffff;
+        background: var(--accent-gradient);
+        box-shadow: 0 8px 18px rgba(0,140,255,0.32);
+    }
+
+    /* hamburger & dropdown menu digantikan bottom nav di mobile */
+    .menu-toggle,
+    .nav-menu{
+        display: none !important;
+    }
+}
+
+/* =========================
+   SCROLL PROGRESS BAR
+========================= */
+.scroll-progress{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    z-index: 10001;
+    background: linear-gradient(90deg, #0f5bd8, #1e90ff, #00c6ff);
+    box-shadow: 0 0 10px rgba(0,180,255,0.6);
+    transition: width 0.1s ease-out;
+}
+
+/* =========================
+   QUICK ACTION (di atas AI Assistant)
+========================= */
+.quick-action{
+    position: fixed;
+    right: 24px;
+    bottom: 112px;
+    z-index: 1601;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.quick-action-toggle{
+    position: relative;
+    width: 52px;
+    height: 52px;
+    border: 1px solid rgba(0,198,255,0.35);
+    border-radius: 50%;
+    background: linear-gradient(180deg, #101d38, #070e1c);
+    box-shadow: 0 12px 26px rgba(0,0,0,0.4), 0 0 18px rgba(0,140,255,0.22);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.quick-action-toggle span,
+.quick-action-toggle span::before,
+.quick-action-toggle span::after{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 999px;
+    transition: var(--transition);
+}
+
+.quick-action-toggle span{
+    transform: translate(-50%, -50%);
+}
+
+.quick-action-toggle span::before{
+    content: "";
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.quick-action-toggle span::after{
+    content: "";
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.quick-action.active .quick-action-toggle span{
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.quick-action.active .quick-action-toggle span::before{
+    transform: translate(-50%, -50%) rotate(90deg) scale(0);
+}
+
+.quick-action-toggle:hover{
+    transform: translateY(-2px);
+}
+
+.quick-action-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: var(--transition);
+}
+
+.quick-action.active .quick-action-menu{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.quick-action-item{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--bg-card);
+    color: var(--title);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.quick-action-item svg{
+    width: 18px;
+    height: 18px;
+}
+
+.quick-action-item:hover{
+    transform: translateY(-2px) scale(1.06);
+    border-color: rgba(0,198,255,0.4);
+}
+
+.quick-action-item::after{
+    content: attr(data-label);
+    position: absolute;
+    right: 54px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #0a1222;
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    pointer-events: none;
+}
+
+.quick-action-item:hover::after{
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 768px){
+    .quick-action{
+        right: 16px;
+        bottom: 100px;
+    }
+
+    .quick-action-toggle{
+        width: 46px;
+        height: 46px;
+    }
+
+    .quick-action-item{
+        width: 40px;
+        height: 40px;
+    }
+
+    .quick-action-item::after{
+        display: none;
+    }
 }
 
 .logo-text h2{
-    color: var(--white);
+    color: var(--title);
     font-family: var(--font-heading);
     font-size: 1.1rem;
     line-height: 1.1;
@@ -322,7 +587,7 @@ header{
 }
 
 .nav-menu li a:hover{
-    color: var(--white);
+    color: var(--title);
 }
 
 .nav-menu li a:hover::after{
@@ -440,7 +705,7 @@ header{
 }
 
 .title-main{
-    color: var(--white);
+    color: var(--title);
     font-family: var(--font-heading);
     font-size: clamp(2.1rem, 5vw, 4.2rem);
     font-weight: 800;
@@ -525,9 +790,9 @@ header{
 }
 
 .btn-secondary{
-    border: 1px solid rgba(255,255,255,0.10);
-    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-    color: var(--white);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--title);
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,0.08),
         0 10px 24px rgba(0,0,0,0.22);
@@ -709,9 +974,17 @@ header{
 }
 
 .features-container{
+    overflow: visible;
+}
+
+.features-track{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 22px;
+}
+
+.feature-card[aria-hidden="true"]{
+    display: none;
 }
 
 .feature-card{
@@ -797,7 +1070,7 @@ header{
 }
 
 .product-price{
-    color: var(--white);
+    color: var(--title);
     font-weight: 700;
 }
 
@@ -837,7 +1110,7 @@ header{
 }
 
 .premium-tab:hover{
-    color: var(--white);
+    color: var(--title);
     border-color: rgba(0,198,255,0.22);
 }
 
@@ -1088,10 +1361,10 @@ header{
 .copy-btn{
     min-height: 44px;
     padding: 0 16px;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
     border-radius: 12px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-    color: var(--white);
+    background: rgba(0,140,255,0.08);
+    color: var(--title);
     cursor: pointer;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
     transition: var(--transition);
@@ -1293,7 +1566,7 @@ header{
     padding-right: 60px;
     border: none;
     background: transparent;
-    color: var(--white);
+    color: var(--title);
     text-align: left;
     font-size: 1rem;
     font-weight: 700;
@@ -1367,8 +1640,8 @@ header{
     min-height: 44px;
     padding: 0 16px;
     border-radius: 12px;
-    background: rgba(255,255,255,0.06);
-    color: var(--white);
+    background: rgba(0,140,255,0.10);
+    color: var(--title);
     font-weight: 700;
     transition: var(--transition);
 }
@@ -1489,7 +1762,7 @@ header{
 }
 
 .footer-links ul li a:hover{
-    color: var(--white);
+    color: var(--title);
 }
 
 .footer-bottom{
@@ -1550,8 +1823,8 @@ header{
     height: 42px;
     border: none;
     border-radius: 50%;
-    background: rgba(255,255,255,0.06);
-    color: var(--white);
+    background: rgba(0,140,255,0.10);
+    color: var(--title);
     font-size: 1.3rem;
     cursor: pointer;
     transition: var(--transition);
@@ -1559,7 +1832,7 @@ header{
 
 .close-order-modal:hover,
 .close-ai-faq:hover{
-    background: rgba(255,255,255,0.12);
+    background: rgba(0,140,255,0.18);
 }
 
 .order-modal-header,
@@ -1593,9 +1866,23 @@ header{
 }
 
 .form-group label{
-    color: var(--white);
+    color: var(--title);
     font-size: 0.95rem;
     font-weight: 700;
+}
+
+.order-description-box{
+    padding: 14px 16px;
+    border: 1px solid rgba(0,140,255,0.22);
+    border-radius: 14px;
+    background: rgba(0,140,255,0.06);
+}
+
+.order-description-box p{
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 0.88rem;
+    line-height: 1.6;
 }
 
 .form-group input,
@@ -1604,10 +1891,10 @@ header{
     width: 100%;
     min-height: 50px;
     padding: 14px 16px;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid var(--border);
     border-radius: 14px;
-    background: rgba(255,255,255,0.04);
-    color: var(--white);
+    background: var(--bg-soft);
+    color: var(--title);
     outline: none;
     transition: var(--transition);
 }
@@ -1702,10 +1989,10 @@ header{
     flex: 1;
     min-height: 50px;
     padding: 0 16px;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid var(--border);
     border-radius: 14px;
-    background: rgba(255,255,255,0.04);
-    color: var(--white);
+    background: var(--bg-soft);
+    color: var(--title);
     outline: none;
 }
 
@@ -1949,7 +2236,7 @@ header{
         margin: 0 auto;
     }
 
-    .features-container{
+    .features-track{
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -2092,7 +2379,6 @@ header{
         max-height: 360px;
     }
 
-    .features-container,
     .products-container,
     .premium-grid,
     .services-container,
@@ -2577,10 +2863,10 @@ header,
    FEATURES
 ========================= */
 .features {
-    overflow: hidden;
+    overflow: visible;
 }
 
-.features-container {
+.features-track {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px;
@@ -2937,19 +3223,21 @@ header,
 
     /* HERO BANNER MOBILE
        teks kiri + gambar kanan sejajar (kotak memanjang),
-       BUKAN ditumpuk ke bawah */
+       BUKAN ditumpuk ke bawah, dibuat ringkas */
     .hero {
-        padding: 90px 0 18px;
+        padding: 78px 0 14px;
         overflow: hidden;
+        min-height: unset;
     }
 
     .hero-container {
         display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
+        grid-template-columns: 1.2fr 0.8fr;
         align-items: center;
-        gap: 14px;
+        gap: 10px;
         padding: 0;
         text-align: left;
+        min-height: unset;
     }
 
     .hero-content {
@@ -2958,16 +3246,22 @@ header,
         min-width: 0;
     }
 
+    .hero-subtitle{
+        margin-bottom: 8px;
+        font-size: 10px;
+    }
+
     .hero-title {
-        font-size: clamp(20px, 6vw, 30px);
+        font-size: clamp(17px, 5.2vw, 24px);
         line-height: 1.15;
+        margin-bottom: 10px;
     }
 
     .hero-description {
-        font-size: 12.5px;
-        line-height: 1.5;
+        font-size: 11.5px;
+        line-height: 1.45;
         max-width: 100%;
-        margin: 0 0 14px;
+        margin: 0 0 12px;
     }
 
     .hero-buttons {
@@ -2978,73 +3272,200 @@ header,
     .hero-buttons a {
         flex: 0 0 auto;
         min-width: 0;
-        padding: 0 14px;
-        font-size: 12.5px;
-        min-height: 40px;
+        padding: 0 12px;
+        font-size: 11px;
+        min-height: 36px;
     }
 
-    /* statistik disembunyikan di mobile supaya banner tetap kotak memanjang, bukan tinggi ke bawah */
-    .hero-stats {
-        display: none;
-    }
+    /* stats sudah dihapus permanen dari HTML */
 
     .hero-image {
         order: 2;
         width: 100%;
         min-width: 0;
+        max-height: 180px;
     }
 
     .hero-image img {
         max-width: 100%;
+        max-height: 180px;
         width: 100%;
         margin-inline: auto;
         object-fit: contain;
     }
 
-    /* FITUR 1 BARIS HORIZONTAL */
+    /* FITUR MINIMALIS + GESER OTOMATIS */
     .features {
         overflow: hidden;
-        padding-top: 10px;
+        padding-top: 8px;
     }
 
     .features-container {
+        overflow: hidden;
+    }
+
+    .features-track {
+        display: flex;
+        width: max-content;
+        gap: 10px;
+        animation: featuresAutoSlide 18s linear infinite;
+    }
+
+    .feature-card[aria-hidden="true"] {
+        display: flex;
+    }
+
+    .feature-card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        flex: 0 0 150px;
+        padding: 12px 10px;
+        min-width: 0;
+    }
+
+    .feature-icon {
+        width: 34px;
+        height: 34px;
+        margin-bottom: 6px;
+        border-radius: 10px;
+        font-size: 0.95rem;
+    }
+
+    .feature-card h3 {
+        margin-bottom: 0;
+        font-size: 0.75rem;
+        line-height: 1.25;
+    }
+
+    .feature-card p {
+        display: none;
+    }
+
+    @keyframes featuresAutoSlide {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+    /* PRODUK POPULER 2 KOLOM */
+    .products-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .product-card {
+        padding: 14px 12px;
+    }
+
+    .product-card h3 {
+        font-size: 0.85rem;
+    }
+
+    .product-card p {
+        font-size: 0.72rem;
+        line-height: 1.4;
+    }
+
+    .product-price {
+        font-size: 0.85rem;
+    }
+
+    .product-btn {
+        min-width: 0;
+        padding: 0 10px;
+        font-size: 0.72rem;
+        min-height: 34px;
+    }
+
+    .product-footer {
+        flex-wrap: wrap;
+        row-gap: 8px;
+    }
+
+    /* ALUR PEMESANAN 1 BARIS MENDATAR */
+    .payment-flow {
+        padding: 20px 0 20px 20px;
+    }
+
+    .flow-steps {
         display: flex;
         gap: 12px;
         overflow-x: auto;
         overflow-y: hidden;
-        padding-bottom: 8px;
-        scroll-snap-type: x mandatory;
+        padding-bottom: 10px;
+        padding-right: 20px;
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
 
-    .features-container::-webkit-scrollbar {
+    .flow-steps::-webkit-scrollbar {
         display: none;
     }
 
-    .feature-card {
-        flex: 0 0 78%;
-        scroll-snap-align: start;
-        min-width: 250px;
+    .flow-step {
+        flex: 0 0 200px;
+        padding: 16px 14px;
+        text-align: left;
     }
 
-    /* PRODUK POPULER 3 KE BAWAH / 1 KOLOM */
-    .products-container {
-        grid-template-columns: 1fr;
-        gap: 14px;
+    .flow-step span {
+        width: 34px;
+        height: 34px;
+        margin-bottom: 10px;
+        font-size: 0.85rem;
     }
 
-    /* PREMIUM APPS 1 KOLOM */
+    .flow-step p {
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+    /* PREMIUM APPS 2 KOLOM */
     .premium-panel .premium-grid,
     .premium-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
     }
 
-    /* LAYANAN 1 KOLOM */
+    .premium-card {
+        padding: 14px 12px;
+    }
+
+    .premium-card h3 {
+        font-size: 0.82rem;
+    }
+
+    /* LAYANAN 2 KOLOM */
     .services-container {
-        grid-template-columns: 1fr;
-        gap: 14px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .service-card {
+        padding: 14px 12px;
+    }
+
+    .service-card h3 {
+        font-size: 0.85rem;
+    }
+
+    .service-card p {
+        font-size: 0.72rem;
+        line-height: 1.4;
+    }
+
+    .service-list li {
+        font-size: 0.72rem;
+    }
+
+    .service-action-btn {
+        padding: 0 10px;
+        font-size: 0.72rem;
+        min-height: 34px;
     }
 
     /* TESTIMONI SEJAJAR 1 BARIS */
@@ -3099,19 +3520,51 @@ header,
         font-size: 12px;
     }
 
-    /* KONTAK 3 KE BAWAH */
+    /* KONTAK 3 MENDATAR */
     .contact-container {
         grid-template-columns: 1fr;
         gap: 18px;
     }
 
     .contact-info {
-        grid-template-columns: 1fr;
-        gap: 12px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
     }
 
     .contact-card {
-        padding: 16px;
+        padding: 10px 8px;
+        text-align: center;
+    }
+
+    .contact-card h3 {
+        flex-direction: column;
+        gap: 4px;
+        font-size: 0.68rem;
+        line-height: 1.25;
+        margin-bottom: 6px;
+    }
+
+    .contact-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .contact-icon svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .contact-card p {
+        margin-bottom: 8px;
+        font-size: 0.62rem;
+        word-break: break-word;
+    }
+
+    .contact-card a {
+        min-height: 32px;
+        padding: 0 6px;
+        font-size: 0.6rem;
+        text-align: center;
     }
 
     .contact-side {
@@ -3146,7 +3599,7 @@ header,
 ========================= */
 @media (max-width: 480px) {
     .hero {
-        padding-top: 84px;
+        padding-top: 74px;
     }
 
     .hero-container {
@@ -3184,6 +3637,260 @@ header,
     .footer-top-grid {
         grid-template-columns: 1fr;
         gap: 20px;
-        text-align: center;
     }
+}
+
+/* =========================
+   LIGHTBOX FOTO TESTIMONI
+========================= */
+.testimonial-gallery img{
+    cursor: pointer;
+    transition: transform .2s ease, filter .2s ease;
+}
+
+.testimonial-gallery img:hover{
+    transform: scale(1.03);
+    filter: brightness(1.05);
+}
+
+.lightbox{
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background: rgba(4, 8, 18, 0.92);
+    opacity: 0;
+    visibility: hidden;
+    transition: .25s ease;
+}
+
+.lightbox.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox img{
+    max-width: min(92vw, 640px);
+    max-height: 88vh;
+    border-radius: 16px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.55);
+    object-fit: contain;
+}
+
+.close-lightbox{
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    color: #ffffff;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-lightbox:hover{
+    background: rgba(255,255,255,0.22);
+}
+
+@media (max-width: 480px){
+    .lightbox{
+        padding: 16px;
+    }
+
+    .close-lightbox{
+        top: 14px;
+        right: 14px;
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+}
+
+/* =========================
+   PENYESUAIAN AKHIR: geser FAB (AI Assistant & Quick Action)
+   supaya tidak ketutup Bottom Navigation di mobile.
+   Diletakkan di akhir file supaya menang di urutan cascade.
+========================= */
+@media (max-width: 768px){
+    .floating-ai{
+        bottom: 82px;
+    }
+
+    .quick-action{
+        bottom: 164px;
+    }
+}
+
+/* =========================
+   AUTOMATIC GREETING TOAST
+   Tema: hitam, abu gelap, emas - modern & premium
+========================= */
+.greeting-toast{
+    position: fixed;
+    top: 100px;
+    right: 24px;
+    z-index: 9500;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    width: min(360px, calc(100vw - 40px));
+    padding: 18px 40px 18px 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    background: linear-gradient(155deg, #14161c 0%, #1c1e26 55%, #0d0e12 100%);
+    box-shadow:
+        0 24px 60px rgba(0,0,0,0.55),
+        0 0 0 1px rgba(212,175,55,0.08) inset,
+        0 0 30px rgba(212,175,55,0.10);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-16px) scale(0.97);
+    transition: opacity .45s ease, transform .45s ease, visibility .45s;
+}
+
+.greeting-toast.active{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.greeting-toast-glow{
+    position: absolute;
+    inset: -1px;
+    border-radius: 18px;
+    padding: 1px;
+    background: linear-gradient(120deg, rgba(212,175,55,0.55), transparent 30%, transparent 70%, rgba(212,175,55,0.4));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: greetingBorderSweep 4s linear infinite;
+}
+
+@keyframes greetingBorderSweep{
+    0%{ opacity: 0.5; }
+    50%{ opacity: 1; }
+    100%{ opacity: 0.5; }
+}
+
+.greeting-toast-icon{
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,175,55,0.4);
+    background: radial-gradient(circle, rgba(212,175,55,0.16), transparent 70%);
+    font-size: 1.3rem;
+    animation: greetingIconFloat 2.6s ease-in-out infinite;
+}
+
+@keyframes greetingIconFloat{
+    0%, 100%{ transform: translateY(0); }
+    50%{ transform: translateY(-3px); }
+}
+
+.greeting-toast-title{
+    margin: 0 0 3px;
+    background: linear-gradient(90deg, #f3d98a, #d4af37 55%, #f3d98a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: .3px;
+}
+
+.greeting-toast-text{
+    margin: 0;
+    color: #c7c9d1;
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+.greeting-toast-close{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 26px;
+    height: 26px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    color: #d4af37;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.greeting-toast-close:hover{
+    background: rgba(212,175,55,0.18);
+}
+
+@media (max-width: 768px){
+    .greeting-toast{
+        top: 14px;
+        right: 14px;
+        left: 14px;
+        width: auto;
+        padding: 14px 36px 14px 14px;
+    }
+
+    .greeting-toast-icon{
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+
+    .greeting-toast-title{
+        font-size: 0.85rem;
+    }
+
+    .greeting-toast-text{
+        font-size: 0.74rem;
+    }
+}
+
+/* =========================
+   SKELETON LOADING (gambar)
+========================= */
+.img-skeleton{
+    position: relative;
+    background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.10) 37%, rgba(255,255,255,0.04) 63%);
+    background-size: 400% 100%;
+    animation: skeletonShimmer 1.4s ease infinite;
+}
+
+.img-skeleton.img-loaded{
+    animation: none;
+    background: none;
+}
+
+img.img-fade{
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+
+img.img-fade.img-loaded{
+    opacity: 1;
+}
+
+@keyframes skeletonShimmer{
+    0%{ background-position: 100% 0; }
+    100%{ background-position: -100% 0; }
+}
+
+body.light-mode .img-skeleton{
+    background: linear-gradient(90deg, rgba(18,40,76,0.06) 25%, rgba(18,40,76,0.14) 37%, rgba(18,40,76,0.06) 63%);
+    background-size: 400% 100%;
 }
