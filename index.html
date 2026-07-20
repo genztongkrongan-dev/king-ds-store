@@ -13,6 +13,10 @@
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="apple-touch-icon" href="images/logo.png">
 
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#070e1c">
+
     <!-- Open Graph (preview saat link dibagikan ke WhatsApp/Facebook/dll) -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="King DS Store | Premium Apps, Jasa Edit, Starlight & Bot WhatsApp">
@@ -83,7 +87,7 @@
 
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#popular-products">Produk</a></li>
+                <li><a href="products.html">Produk</a></li>
                 <li><a href="#premium-apps">Premium Apps</a></li>
                 <li><a href="#services">Layanan</a></li>
                 <li><a href="#payments">Pembayaran</a></li>
@@ -253,11 +257,8 @@
         <div class="products-container">
             <div class="product-card">
                 <div class="product-badge">Populer</div>
+                <img class="product-logo" src="https://logo.clearbit.com/canva.com" alt="Canva Pro logo" loading="lazy">
                 <h3>Canva Pro</h3>
-                <p>
-                    Akses Canva Pro untuk kebutuhan desain konten, promosi, presentasi,
-                    dan editing visual harian.
-                </p>
                 <div class="product-footer">
                     <span class="product-price">Mulai Rp5.000</span>
                     <a href="#premium-apps" class="product-btn">Lihat</a>
@@ -266,11 +267,8 @@
 
             <div class="product-card">
                 <div class="product-badge">Best Seller</div>
+                <img class="product-logo" src="https://logo.clearbit.com/alightmotion.com" alt="Alight Motion Premium logo" loading="lazy">
                 <h3>Alight Motion Premium</h3>
-                <p>
-                    Pilihan favorit untuk kebutuhan edit video, motion, velocity,
-                    dan konten kreatif sosial media.
-                </p>
                 <div class="product-footer">
                     <span class="product-price">Mulai Rp7.000</span>
                     <a href="#premium-apps" class="product-btn">Lihat</a>
@@ -279,11 +277,8 @@
 
             <div class="product-card">
                 <div class="product-badge">MLBB</div>
+                <img class="product-logo" src="https://logo.clearbit.com/mobilelegends.com" alt="Starlight Mobile Legends logo" loading="lazy">
                 <h3>Starlight Mobile Legends</h3>
-                <p>
-                    Tersedia Starlight Member dan Starlight Premium dengan proses gift
-                    yang aman dan praktis.
-                </p>
                 <div class="product-footer">
                     <span class="product-price">Mulai Rp35.000</span>
                     <a href="#starlight" class="product-btn">Order</a>
@@ -292,11 +287,8 @@
 
             <div class="product-card">
                 <div class="product-badge">Creator</div>
+                <div class="product-logo product-logo-icon">🎬</div>
                 <h3>Jasa Edit Video</h3>
-                <p>
-                    Jasa edit video TikTok, montage game, highlight, promo,
-                    dan konten kreator sesuai kebutuhan.
-                </p>
                 <div class="product-footer">
                     <span class="product-price">Rp2.000 - Rp20.000</span>
                     <a href="#video-edit" class="product-btn">Order</a>
@@ -305,11 +297,8 @@
 
             <div class="product-card">
                 <div class="product-badge">AI Tools</div>
+                <img class="product-logo" src="https://logo.clearbit.com/openai.com" alt="ChatGPT, Gemini, Grok logo" loading="lazy">
                 <h3>ChatGPT, Gemini, Grok</h3>
-                <p>
-                    Pilihan akun AI premium untuk kebutuhan belajar, kerja, riset,
-                    dan produktivitas harian.
-                </p>
                 <div class="product-footer">
                     <span class="product-price">Mulai Rp10.000</span>
                     <a href="#premium-apps" class="product-btn">Lihat</a>
@@ -318,15 +307,19 @@
 
             <div class="product-card">
                 <div class="product-badge">Bot WA</div>
+                <img class="product-logo" src="https://logo.clearbit.com/whatsapp.com" alt="Sewa Bot WhatsApp logo" loading="lazy">
                 <h3>Sewa Bot WhatsApp</h3>
-                <p>
-                    Layanan sewa bot dan premium user limit untuk kebutuhan otomatisasi WhatsApp.
-                </p>
                 <div class="product-footer">
                     <span class="product-price">Mulai Rp5.000</span>
                     <a href="#bot-wa" class="product-btn">Lihat</a>
                 </div>
             </div>
+        </div>
+
+        <div class="view-all-products">
+            <a href="products.html" class="btn-secondary">
+                Lihat Semua Produk &amp; Cari Cepat →
+            </a>
         </div>
     </section>
 
@@ -355,6 +348,7 @@
         <div class="premium-panel active" id="tab-editing">
             <div class="premium-grid">
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/alightmotion.com" alt="Alight Motion logo" loading="lazy">
                     <h3>Alight Motion</h3>
                     <ul>
                         <li>Sharing 1 Tahun — <strong>Rp7.000</strong></li>
@@ -372,6 +366,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/canva.com" alt="Canva Pro logo" loading="lazy">
                     <h3>Canva Pro</h3>
                     <ul>
                         <li>1 Bulan Member — <strong>Rp5.000</strong></li>
@@ -390,6 +385,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/capcut.com" alt="CapCut Pro logo" loading="lazy">
                     <h3>CapCut Pro</h3>
                     <ul>
                         <li>Sharing 1 Bulan — <strong>Rp17.000</strong></li>
@@ -411,6 +407,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/adobe.com" alt="Lightroom logo" loading="lazy">
                     <h3>Lightroom</h3>
                     <ul>
                         <li>Sharing 1 Tahun — <strong>Rp15.000</strong></li>
@@ -428,6 +425,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/meitu.com" alt="Meitu logo" loading="lazy">
                     <h3>Meitu</h3>
                     <ul>
                         <li>Android Private 1 Minggu — <strong>Rp17.000</strong></li>
@@ -448,6 +446,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/photoroom.com" alt="PhotoRoom logo" loading="lazy">
                     <h3>PhotoRoom</h3>
                     <ul>
                         <li>Private Android/iOS 1 Tahun — <strong>Rp15.000</strong></li>
@@ -465,6 +464,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/picsart.com" alt="Picsart logo" loading="lazy">
                     <h3>Picsart</h3>
                     <ul>
                         <li>Private Akun Seller 1 Bulan — <strong>Rp10.000</strong></li>
@@ -481,6 +481,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/wink.ai" alt="Wink logo" loading="lazy">
                     <h3>Wink</h3>
                     <ul>
                         <li>Private 1 Minggu — <strong>Rp10.000</strong></li>
@@ -503,6 +504,7 @@
         <div class="premium-panel" id="tab-entertainment">
             <div class="premium-grid">
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/apple.com" alt="Apple Music logo" loading="lazy">
                     <h3>Apple Music</h3>
                     <ul>
                         <li>Invite 1 Bulan — <strong>Rp10.000</strong></li>
@@ -515,6 +517,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/bilibili.tv" alt="Bstation logo" loading="lazy">
                     <h3>Bstation</h3>
                     <ul>
                         <li>Sharing 1 Bulan — <strong>Rp10.000</strong></li>
@@ -529,6 +532,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/dramaboxapp.com" alt="Dramabox logo" loading="lazy">
                     <h3>Dramabox</h3>
                     <ul>
                         <li>1 Bulan — <strong>Rp20.000</strong></li>
@@ -540,6 +544,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/iq.com" alt="iQIYI logo" loading="lazy">
                     <h3>iQIYI</h3>
                     <ul>
                         <li>Sharing 1 Bulan — <strong>Rp10.000</strong></li>
@@ -553,6 +558,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/loklok.com" alt="LokLok logo" loading="lazy">
                     <h3>LokLok</h3>
                     <ul>
                         <li>Basic 1 Bulan — <strong>Rp20.000</strong></li>
@@ -565,6 +571,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/netflix.com" alt="Netflix logo" loading="lazy">
                     <h3>Netflix</h3>
                     <ul>
                         <li>1 Profil 1 User 1 Bulan — <strong>Rp40.000</strong></li>
@@ -578,6 +585,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/spotify.com" alt="Spotify logo" loading="lazy">
                     <h3>Spotify</h3>
                     <ul>
                         <li>1 Bulan — <strong>Rp22.000</strong></li>
@@ -590,6 +598,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/vidio.com" alt="Vidio logo" loading="lazy">
                     <h3>Vidio</h3>
                     <ul>
                         <li>Platinum Sharing 1 Bulan — <strong>Rp25.000</strong></li>
@@ -603,6 +612,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/viu.com" alt="Viu logo" loading="lazy">
                     <h3>Viu</h3>
                     <ul>
                         <li>1 Bulan — <strong>Rp5.000</strong></li>
@@ -617,6 +627,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/youku.com" alt="Youku logo" loading="lazy">
                     <h3>Youku</h3>
                     <ul>
                         <li>Sharing 1 Bulan — <strong>Rp8.000</strong></li>
@@ -630,6 +641,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/youtube.com" alt="YouTube Premium logo" loading="lazy">
                     <h3>YouTube Premium</h3>
                     <ul>
                         <li>Individu akun seller — <strong>Rp12.000</strong></li>
@@ -651,6 +663,7 @@
         <div class="premium-panel" id="tab-productivity">
             <div class="premium-grid">
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/camscanner.com" alt="CamScanner Pro logo" loading="lazy">
                     <h3>CamScanner Pro</h3>
                     <ul>
                         <li>Sharing — <strong>Rp8.000</strong></li>
@@ -663,6 +676,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/camscanner.com" alt="CamScanner+ logo" loading="lazy">
                     <h3>CamScanner+</h3>
                     <ul>
                         <li>Lifetime — <strong>Rp20.000</strong></li>
@@ -674,6 +688,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/ilovepdf.com" alt="I Love PDF logo" loading="lazy">
                     <h3>I Love PDF</h3>
                     <ul>
                         <li>Private 1 Minggu — <strong>Rp8.000</strong></li>
@@ -685,6 +700,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/scribd.com" alt="Scribd logo" loading="lazy">
                     <h3>Scribd</h3>
                     <ul>
                         <li>Sharing 1 Bulan — <strong>Rp10.000</strong></li>
@@ -696,6 +712,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/zoom.us" alt="Zoom logo" loading="lazy">
                     <h3>Zoom</h3>
                     <ul>
                         <li>Private 100p 2 Minggu — <strong>Rp15.000</strong></li>
@@ -712,6 +729,7 @@
         <div class="premium-panel" id="tab-ai">
             <div class="premium-grid">
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/openai.com" alt="ChatGPT logo" loading="lazy">
                     <h3>ChatGPT</h3>
                     <ul>
                         <li>Sharing 1 Bulan — <strong>Rp10.000</strong></li>
@@ -724,6 +742,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/google.com" alt="Gemini AI logo" loading="lazy">
                     <h3>Gemini AI</h3>
                     <ul>
                         <li>Buyer / akun private — <strong>Rp15.000</strong></li>
@@ -736,6 +755,7 @@
                 </div>
 
                 <div class="premium-card">
+                    <img class="premium-logo" src="https://logo.clearbit.com/x.ai" alt="Grok AI logo" loading="lazy">
                     <h3>Grok AI</h3>
                     <ul>
                         <li>1 Bulan — <strong>Rp25.000</strong></li>
@@ -1396,7 +1416,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
             <span>Home</span>
         </a>
-        <a href="#popular-products" class="bottom-nav-item" data-target="popular-products">
+        <a href="products.html" class="bottom-nav-item" data-target="produk-page">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
             <span>Produk</span>
         </a>
@@ -1470,5 +1490,12 @@
 
     <!-- Main JS -->
     <script src="js/script.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("sw.js").catch(() => {});
+            });
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,40 @@
+{
+  "name": "King DS Store - Premium Apps & Layanan Digital",
+  "short_name": "King DS Store",
+  "description": "Premium Apps, Jasa Edit Video, Starlight Mobile Legends, Joki Rank MLBB, dan Bot WhatsApp dari King DS Store.",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#070e1c",
+  "theme_color": "#070e1c",
+  "lang": "id",
+  "icons": [
+    {
+      "src": "images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Semua Produk",
+      "short_name": "Produk",
+      "url": "products.html",
+      "icons": [{ "src": "images/logo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Kontak Admin",
+      "short_name": "Kontak",
+      "url": "index.html#contact",
+      "icons": [{ "src": "images/logo.png", "sizes": "192x192" }]
+    }
+  ]
+}

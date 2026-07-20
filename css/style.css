@@ -3894,3 +3894,312 @@ body.light-mode .img-skeleton{
     background: linear-gradient(90deg, rgba(18,40,76,0.06) 25%, rgba(18,40,76,0.14) 37%, rgba(18,40,76,0.06) 63%);
     background-size: 400% 100%;
 }
+
+/* =========================
+   LOGO PRODUK DI KARTU PREMIUM APPS
+========================= */
+.premium-logo{
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin-bottom: 14px;
+    padding: 8px;
+    border-radius: 14px;
+    background: #ffffff;
+    object-fit: contain;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+.premium-card{
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px){
+    .premium-logo{
+        width: 36px;
+        height: 36px;
+        margin-bottom: 10px;
+        padding: 6px;
+        border-radius: 10px;
+    }
+}
+
+/* =========================
+   LOGO PRODUK DI KARTU PRODUK POPULER
+========================= */
+.product-logo{
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 14px;
+    padding: 8px;
+    border-radius: 14px;
+    background: #ffffff;
+    object-fit: contain;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+.product-logo-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    background: linear-gradient(135deg, rgba(15,91,216,0.18), rgba(0,198,255,0.14));
+    box-shadow: none;
+}
+
+.product-card{
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px){
+    .product-logo{
+        width: 34px;
+        height: 34px;
+        margin-bottom: 8px;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+    .product-logo-icon{
+        font-size: 1.05rem;
+    }
+}
+
+/* =========================
+   HALAMAN SEMUA PRODUK (products.html)
+========================= */
+.catalog-hero{
+    padding: 130px 20px 30px;
+    text-align: center;
+}
+
+.catalog-title{
+    max-width: 760px;
+    margin: 10px auto 14px;
+    color: var(--title);
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.catalog-subtext{
+    max-width: 620px;
+    margin: 0 auto 26px;
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.catalog-search{
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0 50px 0 46px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--bg-card);
+    box-shadow: var(--shadow);
+}
+
+.catalog-search svg{
+    position: absolute;
+    left: 16px;
+    width: 18px;
+    height: 18px;
+    color: var(--text-soft);
+}
+
+.catalog-search input{
+    width: 100%;
+    min-height: 54px;
+    border: none;
+    background: transparent;
+    color: var(--title);
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.catalog-search-clear{
+    position: absolute;
+    right: 12px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0,140,255,0.10);
+    color: var(--title);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.catalog-search-clear:hover{
+    background: rgba(0,140,255,0.18);
+}
+
+.catalog-result-info{
+    margin-top: 14px;
+    color: var(--text-soft);
+    font-size: 0.85rem;
+}
+
+.catalog-grid-section{
+    padding: 0 20px 90px;
+}
+
+.catalog-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 18px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.catalog-card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 22px 18px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: linear-gradient(180deg, var(--bg-card), var(--bg-card-2));
+    box-shadow: 0 16px 34px rgba(0,0,0,0.22);
+    transition: var(--transition);
+}
+
+.catalog-card:hover{
+    transform: translateY(-4px);
+    border-color: rgba(0,198,255,0.3);
+}
+
+.catalog-card.is-hidden{
+    display: none;
+}
+
+.catalog-card-logo{
+    display: block;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 12px;
+    padding: 8px;
+    border-radius: 12px;
+    background: #ffffff;
+    object-fit: contain;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.catalog-card-logo-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, rgba(15,91,216,0.18), rgba(0,198,255,0.14));
+    box-shadow: none;
+}
+
+.catalog-card h3{
+    margin-bottom: 8px;
+    color: var(--title);
+    font-family: var(--font-heading);
+    font-size: 0.92rem;
+    line-height: 1.3;
+    min-height: 36px;
+}
+
+.catalog-card-price{
+    display: block;
+    margin-bottom: 14px;
+    color: var(--blue-3);
+    font-weight: 700;
+    font-size: 0.88rem;
+}
+
+.catalog-card-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    border-radius: 999px;
+    background: var(--accent-gradient);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.8rem;
+    box-shadow: 0 10px 22px rgba(0,140,255,0.22);
+    transition: var(--transition);
+}
+
+.catalog-card-btn:hover{
+    transform: translateY(-2px);
+}
+
+.catalog-empty{
+    max-width: 420px;
+    margin: 40px auto 0;
+    text-align: center;
+}
+
+.catalog-empty-icon{
+    margin-bottom: 12px;
+    font-size: 2.4rem;
+}
+
+.catalog-empty p{
+    margin-bottom: 18px;
+    color: var(--text-soft);
+}
+
+.active-page{
+    color: var(--white) !important;
+}
+
+@media (max-width: 768px){
+    .catalog-hero{
+        padding: 100px 16px 20px;
+    }
+
+    .catalog-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .catalog-card{
+        padding: 14px 12px;
+    }
+
+    .catalog-card-logo{
+        width: 34px;
+        height: 34px;
+        margin-bottom: 8px;
+    }
+
+    .catalog-card h3{
+        font-size: 0.78rem;
+        min-height: 32px;
+    }
+
+    .catalog-card-price{
+        font-size: 0.74rem;
+        margin-bottom: 10px;
+    }
+
+    .catalog-card-btn{
+        min-height: 34px;
+        font-size: 0.7rem;
+    }
+}
+
+.view-all-products{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.view-all-products .btn-secondary{
+    padding: 14px 28px;
+}

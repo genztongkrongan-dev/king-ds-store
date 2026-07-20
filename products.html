@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semua Produk | King DS Store</title>
+    <meta
+        name="description"
+        content="Katalog lengkap produk King DS Store: Premium Apps, Jasa Edit Video, Starlight Mobile Legends, Joki Rank MLBB, dan Bot WhatsApp. Cari produk dengan cepat lewat fitur pencarian."
+    >
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#070e1c">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Semua Produk | King DS Store">
+    <meta property="og:description" content="Katalog lengkap Premium Apps, Jasa Edit Video, Starlight ML, Joki Rank MLBB, dan Bot WhatsApp di King DS Store.">
+    <meta property="og:image" content="images/logo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Progress Bar Scroll -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Background Rain -->
+    <div class="rain-layer" id="rainLayer"></div>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <div class="logo-avatar">
+                    <img src="images/logo.png" alt="King DS Store" decoding="async">
+                </div>
+                <div class="logo-text">
+                    <h2>King DS Store</h2>
+                    <p>Digital Services & Gaming Store</p>
+                </div>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="products.html" class="active-page">Semua Produk</a></li>
+                <li><a href="index.html#services">Layanan</a></li>
+                <li><a href="index.html#payments">Pembayaran</a></li>
+                <li><a href="index.html#testimonials">Testimoni</a></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+                <li><a href="index.html#contact">Kontak</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="themeToggle" class="theme-toggle" type="button" aria-label="Ganti mode tema">
+                    <span class="theme-toggle-icon">🌙</span>
+                    <span class="theme-toggle-text">Mode Gelap</span>
+                </button>
+
+                <a
+                    href="https://wa.me/6285143887892"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-order"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- =========================
+         KATALOG PRODUK
+    ========================== -->
+    <section class="catalog-hero">
+        <p class="section-subtitle">KATALOG LENGKAP</p>
+        <h1 class="catalog-title">Semua Produk King DS Store</h1>
+        <p class="catalog-subtext">
+            Cari Premium Apps, jasa edit video, Starlight ML, Joki Rank MLBB, hingga bot WhatsApp
+            dalam satu halaman. Ketik nama produk di kolom pencarian di bawah ini.
+        </p>
+
+        <div class="catalog-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input type="text" id="catalogSearchInput" placeholder="Cari produk, misalnya: Canva, CapCut, Netflix, Joki Rank...">
+            <button type="button" id="catalogSearchClear" class="catalog-search-clear" aria-label="Hapus pencarian" style="display:none;">✕</button>
+        </div>
+
+        <p class="catalog-result-info" id="catalogResultInfo"></p>
+    </section>
+
+    <section class="catalog-grid-section">
+        <div class="catalog-grid" id="catalogGrid">
+            <div class="catalog-card" data-search="alight motion">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/alightmotion.com" alt="Alight Motion logo" loading="lazy">
+                <h3>Alight Motion</h3>
+                <span class="catalog-card-price">Mulai Rp7.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Alight Motion"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp7.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="canva pro">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/canva.com" alt="Canva Pro logo" loading="lazy">
+                <h3>Canva Pro</h3>
+                <span class="catalog-card-price">Mulai Rp5.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Canva Pro"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp5.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="capcut pro">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/capcut.com" alt="CapCut Pro logo" loading="lazy">
+                <h3>CapCut Pro</h3>
+                <span class="catalog-card-price">Mulai Rp15.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="CapCut Pro"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp15.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="lightroom">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/adobe.com" alt="Lightroom logo" loading="lazy">
+                <h3>Lightroom</h3>
+                <span class="catalog-card-price">Rp15.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Lightroom"
+                    data-category="Premium Apps"
+                    data-price="Rp15.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="meitu">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/meitu.com" alt="Meitu logo" loading="lazy">
+                <h3>Meitu</h3>
+                <span class="catalog-card-price">Mulai Rp17.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Meitu"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp17.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="photoroom">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/photoroom.com" alt="PhotoRoom logo" loading="lazy">
+                <h3>PhotoRoom</h3>
+                <span class="catalog-card-price">Mulai Rp15.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="PhotoRoom"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp15.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="picsart">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/picsart.com" alt="Picsart logo" loading="lazy">
+                <h3>Picsart</h3>
+                <span class="catalog-card-price">Rp10.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Picsart"
+                    data-category="Premium Apps"
+                    data-price="Rp10.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="wink">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/wink.ai" alt="Wink logo" loading="lazy">
+                <h3>Wink</h3>
+                <span class="catalog-card-price">Rp10.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Wink"
+                    data-category="Premium Apps"
+                    data-price="Rp10.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="apple music">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/apple.com" alt="Apple Music logo" loading="lazy">
+                <h3>Apple Music</h3>
+                <span class="catalog-card-price">Mulai Rp10.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Apple Music"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp10.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="bstation">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/bilibili.tv" alt="Bstation logo" loading="lazy">
+                <h3>Bstation</h3>
+                <span class="catalog-card-price">Mulai Rp10.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Bstation"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp10.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="dramabox">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/dramaboxapp.com" alt="Dramabox logo" loading="lazy">
+                <h3>Dramabox</h3>
+                <span class="catalog-card-price">Rp20.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Dramabox"
+                    data-category="Premium Apps"
+                    data-price="Rp20.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="iqiyi">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/iq.com" alt="iQIYI logo" loading="lazy">
+                <h3>iQIYI</h3>
+                <span class="catalog-card-price">Mulai Rp10.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="iQIYI"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp10.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="loklok">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/loklok.com" alt="LokLok logo" loading="lazy">
+                <h3>LokLok</h3>
+                <span class="catalog-card-price">Mulai Rp20.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="LokLok"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp20.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="netflix">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/netflix.com" alt="Netflix logo" loading="lazy">
+                <h3>Netflix</h3>
+                <span class="catalog-card-price">Mulai Rp24.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Netflix"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp24.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="spotify">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/spotify.com" alt="Spotify logo" loading="lazy">
+                <h3>Spotify</h3>
+                <span class="catalog-card-price">Mulai Rp22.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Spotify"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp22.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="vidio">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/vidio.com" alt="Vidio logo" loading="lazy">
+                <h3>Vidio</h3>
+                <span class="catalog-card-price">Mulai Rp23.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Vidio"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp23.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="viu">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/viu.com" alt="Viu logo" loading="lazy">
+                <h3>Viu</h3>
+                <span class="catalog-card-price">Mulai Rp5.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Viu"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp5.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="youku">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/youku.com" alt="Youku logo" loading="lazy">
+                <h3>Youku</h3>
+                <span class="catalog-card-price">Mulai Rp8.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Youku"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp8.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="youtube premium">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/youtube.com" alt="YouTube Premium logo" loading="lazy">
+                <h3>YouTube Premium</h3>
+                <span class="catalog-card-price">Mulai Rp6.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="YouTube Premium"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp6.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="camscanner pro">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/camscanner.com" alt="CamScanner Pro logo" loading="lazy">
+                <h3>CamScanner Pro</h3>
+                <span class="catalog-card-price">Mulai Rp8.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="CamScanner Pro"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp8.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="camscanner+">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/camscanner.com" alt="CamScanner+ logo" loading="lazy">
+                <h3>CamScanner+</h3>
+                <span class="catalog-card-price">Rp20.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="CamScanner+"
+                    data-category="Premium Apps"
+                    data-price="Rp20.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="i love pdf">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/ilovepdf.com" alt="I Love PDF logo" loading="lazy">
+                <h3>I Love PDF</h3>
+                <span class="catalog-card-price">Rp8.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="I Love PDF"
+                    data-category="Premium Apps"
+                    data-price="Rp8.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="scribd">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/scribd.com" alt="Scribd logo" loading="lazy">
+                <h3>Scribd</h3>
+                <span class="catalog-card-price">Mulai Rp10.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Scribd"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp10.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="zoom">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/zoom.us" alt="Zoom logo" loading="lazy">
+                <h3>Zoom</h3>
+                <span class="catalog-card-price">Mulai Rp15.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Zoom"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp15.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="chatgpt">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/openai.com" alt="ChatGPT logo" loading="lazy">
+                <h3>ChatGPT</h3>
+                <span class="catalog-card-price">Mulai Rp10.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="ChatGPT"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp10.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="gemini ai">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/google.com" alt="Gemini AI logo" loading="lazy">
+                <h3>Gemini AI</h3>
+                <span class="catalog-card-price">Mulai Rp15.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Gemini AI"
+                    data-category="Premium Apps"
+                    data-price="Mulai Rp15.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="grok ai">
+                <img class="catalog-card-logo" src="https://logo.clearbit.com/x.ai" alt="Grok AI logo" loading="lazy">
+                <h3>Grok AI</h3>
+                <span class="catalog-card-price">Rp25.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Grok AI"
+                    data-category="Premium Apps"
+                    data-price="Rp25.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="jasa edit video">
+                <div class="catalog-card-logo catalog-card-logo-icon">🎬</div>
+                <h3>Jasa Edit Video</h3>
+                <span class="catalog-card-price">Mulai Rp2.000 - Rp20.000 / video</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Jasa Edit Video"
+                    data-category="Jasa Edit Video"
+                    data-price="Mulai Rp2.000 - Rp20.000 / video"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="starlight mobile legends">
+                <div class="catalog-card-logo catalog-card-logo-icon">🎁</div>
+                <h3>Starlight Mobile Legends</h3>
+                <span class="catalog-card-price">Mulai Rp35.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Starlight Mobile Legends"
+                    data-category="Starlight Mobile Legends"
+                    data-price="Mulai Rp35.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="sewa bot whatsapp">
+                <div class="catalog-card-logo catalog-card-logo-icon">🤖</div>
+                <h3>Sewa Bot WhatsApp</h3>
+                <span class="catalog-card-price">Mulai Rp5.000</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Sewa Bot WhatsApp"
+                    data-category="Sewa Bot WhatsApp"
+                    data-price="Mulai Rp5.000"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+
+            <div class="catalog-card" data-search="joki rank mlbb">
+                <div class="catalog-card-logo catalog-card-logo-icon">🏆</div>
+                <h3>Joki Rank MLBB</h3>
+                <span class="catalog-card-price">Mulai Rp3.000 / bintang</span>
+                <a
+                    href="#"
+                    class="catalog-card-btn bot-order-btn"
+                    data-product="Joki Rank MLBB"
+                    data-category="Joki Rank MLBB"
+                    data-price="Mulai Rp3.000 / bintang"
+                >
+                    Order Sekarang
+                </a>
+            </div>
+        </div>
+
+        <div class="catalog-empty" id="catalogEmpty" style="display:none;">
+            <div class="catalog-empty-icon">🔍</div>
+            <p>Produk tidak ditemukan. Coba kata kunci lain, atau hubungi admin langsung.</p>
+            <a href="https://wa.me/6285143887892" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Tanya Admin
+            </a>
+        </div>
+    </section>
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="images/logo.png" alt="King DS Store" loading="lazy" decoding="async">
+                <h3>King DS Store</h3>
+                <p>
+                    Premium Apps, Jasa Edit Video, Starlight Mobile Legends,
+                    dan layanan digital lainnya dalam satu tempat.
+                </p>
+            </div>
+
+            <div class="footer-top-grid">
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="products.html">Semua Produk</a></li>
+                        <li><a href="index.html#services">Layanan</a></li>
+                        <li><a href="index.html#payments">Pembayaran</a></li>
+                        <li><a href="index.html#testimonials">Testimoni</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Kontak</h4>
+                    <ul>
+                        <li>
+                            <a href="https://wa.me/6285143887892" target="_blank" rel="noopener noreferrer">
+                                WhatsApp
+                            </a>
+                        </li>
+                        <li><a href="mailto:topdragonfly15@gmail.com">Email</a></li>
+                        <li>
+                            <a
+                                href="https://www.instagram.com/king_ds_store?igsh=OTlrZGZueWg0MWox"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://tiktok.com/@kingdsofficial" target="_blank" rel="noopener noreferrer">
+                                TikTok
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-payment-row">
+                <h4>Metode Pembayaran</h4>
+                <div class="footer-payment-list">
+                    <span>DANA</span>
+                    <span>BRI</span>
+                    <span>QRIS</span>
+                    <span>Konfirmasi via WhatsApp</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 King DS Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- =========================
+         ORDER MODAL
+    ========================== -->
+    <div class="order-modal" id="orderModal" aria-hidden="true">
+        <div class="order-modal-content" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
+            <button class="close-order-modal" id="closeOrderModal" type="button" aria-label="Tutup modal">
+                &times;
+            </button>
+
+            <div class="order-modal-header">
+                <p class="section-subtitle">FORM ORDER</p>
+                <h3 id="orderModalTitle">Lengkapi Data Pesanan</h3>
+                <p>
+                    Isi form berikut, lalu lanjutkan ke WhatsApp untuk konfirmasi pembayaran dan pesanan.
+                </p>
+            </div>
+
+            <form id="orderForm" class="order-form">
+                <div class="form-group">
+                    <label for="customerName">Nama</label>
+                    <input type="text" id="customerName" placeholder="Masukkan nama Anda" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerWhatsapp">Nomor WhatsApp</label>
+                    <input
+                        type="tel"
+                        id="customerWhatsapp"
+                        placeholder="08xxxxxxxxxx"
+                        pattern="[0-9]{9,15}"
+                        inputmode="numeric"
+                        title="Masukkan nomor WhatsApp yang valid (angka saja, 9-15 digit)"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="orderProduct">Produk</label>
+                    <input type="text" id="orderProduct" readonly>
+                </div>
+
+                <div class="order-description-box" id="orderDescriptionBox" style="display:none;">
+                    <p id="orderDescriptionText"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderCategory">Kategori</label>
+                    <input type="text" id="orderCategory" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderVariant">Varian / Paket</label>
+                    <input
+                        type="text"
+                        id="orderVariant"
+                        placeholder="Contoh: Sharing 1 Bulan / Private 1 Tahun"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="orderPrice">Harga</label>
+                    <input type="text" id="orderPrice" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentMethod">Metode Pembayaran</label>
+                    <select id="paymentMethod" required>
+                        <option value="">Pilih metode pembayaran</option>
+                        <option value="DANA">DANA</option>
+                        <option value="BRI">BRI</option>
+                        <option value="QRIS">QRIS</option>
+                    </select>
+                </div>
+
+                <div class="payment-detail-box" id="paymentDetailBox">
+                    <div class="payment-detail-item payment-detail-dana" id="paymentDana">
+                        <h4>DANA</h4>
+                        <p>Silahkan transfer ke nomor DANA berikut, lalu lanjutkan konfirmasi via WhatsApp.</p>
+                        <p><strong>Nomor DANA:</strong> 0851-4388-7892 a.n. King DS Store</p>
+                    </div>
+
+                    <div class="payment-detail-item payment-detail-bri" id="paymentBri">
+                        <h4>BRI</h4>
+                        <p>Silahkan transfer ke rekening BRI berikut, lalu lanjutkan konfirmasi via WhatsApp.</p>
+                        <p><strong>No. Rekening BRI:</strong> 625401027303531 a.n. King DS Store</p>
+                    </div>
+
+                    <div class="payment-detail-item payment-detail-qris" id="paymentQris">
+                        <h4>QRIS</h4>
+                        <p>Silahkan scan QRIS berikut untuk melakukan pembayaran.</p>
+                        <div class="modal-qris-box">
+                            <img src="images/payments/QRIS.jpeg" alt="QRIS King Ds Store" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderNotes">Catatan Tambahan</label>
+                    <textarea id="orderNotes" rows="4" placeholder="Tulis catatan tambahan jika ada"></textarea>
+                </div>
+
+                <button type="submit" class="submit-order-btn">
+                    Lanjutkan ke WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- =========================
+         AI FAQ MODAL
+    ========================== -->
+    <div class="ai-faq-modal" id="aiFaqModal" aria-hidden="true">
+        <div class="ai-faq-content" role="dialog" aria-modal="true" aria-labelledby="aiFaqTitle">
+            <button class="close-ai-faq" id="closeAiFaq" type="button" aria-label="Tutup AI FAQ">
+                &times;
+            </button>
+
+            <div class="ai-faq-header">
+                <h3 id="aiFaqTitle">King DS AI Assistant</h3>
+                <p>Tanyakan seputar produk, premium apps, jasa, dan pembayaran.</p>
+            </div>
+
+            <div class="ai-faq-body" id="aiFaqBody">
+                <div class="ai-message ai-bot">
+                    Halo 👋 Saya AI Assistant King DS Store. Ada yang ingin ditanyakan?
+                </div>
+            </div>
+
+            <div class="ai-faq-input">
+                <input type="text" id="aiFaqInput" placeholder="Tulis pertanyaan kamu...">
+                <button type="button" id="sendAiFaq">Kirim</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bottom-nav" id="bottomNav">
+        <a href="index.html#home" class="bottom-nav-item" data-target="home">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+            <span>Home</span>
+        </a>
+        <a href="products.html" class="bottom-nav-item active" data-target="produk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span>Produk</span>
+        </a>
+        <a href="index.html#services" class="bottom-nav-item" data-target="services">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7h-7z"/><path d="M3 14h7v7H3z"/><circle cx="17.5" cy="17.5" r="3.5"/></svg>
+            <span>Jasa</span>
+        </a>
+        <a href="index.html#contact" class="bottom-nav-item" data-target="contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+            <span>Kontak</span>
+        </a>
+    </nav>
+
+    <div class="quick-action" id="quickAction">
+        <div class="quick-action-menu" id="quickActionMenu">
+            <a
+                href="https://wa.me/6285143887892"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="quick-action-item"
+                data-label="WhatsApp"
+            >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </a>
+
+            <a
+                href="https://tiktok.com/@kingdsofficial"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="quick-action-item"
+                data-label="TikTok"
+            >
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.1 1.8 3.7 4 4v3c-1.5 0-2.9-.4-4-1.2v6.7A5.5 5.5 0 1 1 12.5 10v3.1a2.4 2.4 0 1 0 1.7 2.3V3H16z"/></svg>
+            </a>
+
+            <a
+                href="https://www.instagram.com/king_ds_store?igsh=OTlrZGZueWg0MWox"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="quick-action-item"
+                data-label="Instagram"
+            >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+
+            <button type="button" class="quick-action-item" id="quickActionTop" data-label="Ke Atas">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+            </button>
+
+            <a href="index.html#contact" class="quick-action-item" data-label="Kontak">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+            </a>
+        </div>
+
+        <button type="button" class="quick-action-toggle" id="quickActionToggle" aria-label="Buka Aksi Cepat">
+            <span></span>
+        </button>
+    </div>
+
+    <button id="floatingAI" class="floating-ai" type="button" aria-label="Buka AI Assistant">
+        <div class="floating-ai-inner">
+            <img src="images/hero/ASSISTANT-AI.png" alt="AI Assistant" class="floating-ai-img" loading="lazy" decoding="async">
+            <span class="floating-ai-glow"></span>
+        </div>
+    </button>
+
+    <div class="lightbox" id="lightboxModal" aria-hidden="true">
+        <button type="button" class="close-lightbox" id="closeLightbox" aria-label="Tutup">✕</button>
+        <img src="" alt="" id="lightboxImg">
+    </div>
+
+    <!-- Main JS -->
+    <script src="js/script.js"></script>
+    <script src="js/products.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("sw.js").catch(() => {});
+            });
+        }
+    </script>
+</body>
+</html>
