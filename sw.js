@@ -1,10 +1,12 @@
 /* =========================================================
    SERVICE WORKER - King DS Store PWA
-   Strategi: cache-first untuk aset statis, selalu coba
-   jaringan dulu untuk halaman HTML supaya konten tetap up to date.
+   Strategi: stale-while-revalidate untuk aset statis (selalu
+   coba ambil versi terbaru dari jaringan, tampilkan cache dulu
+   biar cepat, lalu perbarui cache diam-diam) dan network-first
+   untuk halaman HTML supaya konten tetap up to date.
 ========================================================= */
 
-const CACHE_NAME = "kingds-cache-v1";
+const CACHE_NAME = "kingds-cache-v2";
 
 const STATIC_ASSETS = [
     "index.html",
@@ -39,7 +41,9 @@ self.addEventListener("activate", event => {
 });
 
 // FETCH: network-first untuk halaman HTML (konten selalu fresh),
-// cache-first untuk aset statis (css/js/gambar) supaya cepat & bisa offline.
+// stale-while-revalidate untuk aset statis (css/js/gambar):
+// langsung tampilkan cache (cepat), sambil diam-diam ambil versi
+// terbaru dari jaringan dan simpan ke cache untuk kunjungan berikutnya.
 self.addEventListener("fetch", event => {
     const { request } = event;
 
@@ -61,19 +65,19 @@ self.addEventListener("fetch", event => {
     }
 
     event.respondWith(
-        caches.match(request).then(cached => {
-            if (cached) return cached;
+        caches.open(CACHE_NAME).then(cache =>
+            cache.match(request).then(cached => {
+                const networkFetch = fetch(request)
+                    .then(response => {
+                        if (response && response.status === 200 && response.type === "basic") {
+                            cache.put(request, response.clone());
+                        }
+                        return response;
+                    })
+                    .catch(() => cached);
 
-            return fetch(request)
-                .then(response => {
-                    // hanya cache respons yang valid & same-origin
-                    if (response && response.status === 200 && response.type === "basic") {
-                        const clone = response.clone();
-                        caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
-                    }
-                    return response;
-                })
-                .catch(() => cached);
-        })
+                return cached || networkFetch;
+            })
+        )
     );
 });
