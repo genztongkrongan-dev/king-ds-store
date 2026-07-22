@@ -279,6 +279,7 @@ function initOrderModal() {
     const orderPriceInput = document.getElementById("orderPrice");
     const orderDescriptionBox = document.getElementById("orderDescriptionBox");
     const orderDescriptionText = document.getElementById("orderDescriptionText");
+    const orderDescriptionImage = document.getElementById("orderDescriptionImage");
 
     const premiumOrderButtons = document.querySelectorAll(".premium-order-btn");
     const botOrderButtons = document.querySelectorAll(".bot-order-btn");
@@ -312,19 +313,34 @@ function initOrderModal() {
         }
     }
 
-    function openOrderModal(productName, categoryName, priceText, descriptionText) {
+    // Deskripsi form order berisi SEMUA info harga & paket (bukan lagi field "Harga" terpisah).
+    // Untuk produk tertentu (mis. Bot WhatsApp), deskripsi bisa berupa gambar katalog saja.
+    function openOrderModal(productName, categoryName, priceText, descriptionText, descriptionImage) {
         if (!orderModal) return;
 
         if (orderProductInput) orderProductInput.value = productName || "";
         if (orderCategoryInput) orderCategoryInput.value = categoryName || "";
+        // Field harga tetap diisi (tersembunyi di tampilan) untuk kebutuhan internal saja.
         if (orderPriceInput) orderPriceInput.value = priceText || "";
 
-        if (orderDescriptionBox && orderDescriptionText) {
-            if (descriptionText) {
+        if (orderDescriptionBox && orderDescriptionText && orderDescriptionImage) {
+            if (descriptionImage) {
+                orderDescriptionText.textContent = "";
+                orderDescriptionText.style.display = "none";
+                orderDescriptionImage.src = descriptionImage;
+                orderDescriptionImage.style.display = "block";
+                orderDescriptionBox.style.display = "block";
+            } else if (descriptionText) {
+                orderDescriptionImage.src = "";
+                orderDescriptionImage.style.display = "none";
                 orderDescriptionText.textContent = descriptionText;
+                orderDescriptionText.style.display = "block";
                 orderDescriptionBox.style.display = "block";
             } else {
                 orderDescriptionText.textContent = "";
+                orderDescriptionImage.src = "";
+                orderDescriptionText.style.display = "none";
+                orderDescriptionImage.style.display = "none";
                 orderDescriptionBox.style.display = "none";
             }
         }
@@ -351,8 +367,9 @@ function initOrderModal() {
             const category = button.getAttribute("data-category") || "Premium Apps";
             const price = button.getAttribute("data-price") || "-";
             const description = button.getAttribute("data-description") || "";
+            const descriptionImage = button.getAttribute("data-description-image") || "";
 
-            openOrderModal(product, category, price, description);
+            openOrderModal(product, category, price, description, descriptionImage);
         });
     });
 
@@ -364,8 +381,9 @@ function initOrderModal() {
             const category = button.getAttribute("data-category") || "Bot WhatsApp";
             const price = button.getAttribute("data-price") || "-";
             const description = button.getAttribute("data-description") || "";
+            const descriptionImage = button.getAttribute("data-description-image") || "";
 
-            openOrderModal(product, category, price, description);
+            openOrderModal(product, category, price, description, descriptionImage);
         });
     });
 
@@ -414,6 +432,17 @@ function initOrderModal() {
                 paymentInfo = "QRIS - Scan QRIS di form order";
             }
 
+            // Info harga & paket dikirim lewat baris "Paket & Harga" (bukan field Harga terpisah).
+            // Kalau deskripsi berupa gambar (mis. katalog Bot WA), tampilkan catatan singkat saja.
+            let paketHarga;
+            if (orderDescriptionImage && orderDescriptionImage.style.display === "block" && orderDescriptionImage.src) {
+                paketHarga = "Lihat gambar katalog yang sudah dikirim di website";
+            } else if (orderDescriptionText && orderDescriptionText.textContent.trim()) {
+                paketHarga = orderDescriptionText.textContent.trim();
+            } else {
+                paketHarga = orderPrice || "-";
+            }
+
             const waMessage = `Halo admin King DS Store, saya ingin order.
 
 *DATA PEMBELI*
@@ -424,7 +453,7 @@ No. WhatsApp: ${customerWhatsapp}
 Produk: ${orderProduct}
 Kategori: ${orderCategory}
 Varian/Paket: ${orderVariant}
-Harga: ${orderPrice}
+Paket & Harga: ${paketHarga}
 Metode Pembayaran: ${paymentMethod}
 Detail Pembayaran: ${paymentInfo}
 Catatan: ${orderNotes}
