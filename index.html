@@ -117,46 +117,23 @@
     <!-- =========================
          HERO SECTION
     ========================== -->
-    <section class="hero" id="home">
-        <div class="hero-corner top-left"></div>
-        <div class="hero-corner top-right"></div>
-        <div class="hero-corner bottom-left"></div>
-        <div class="hero-corner bottom-right"></div>
-
-        <div class="hero-container">
-            <!-- Hero Content -->
-            <div class="hero-content">
-                <p class="hero-subtitle">WELCOME TO KING DS STORE</p>
-
-                <h1 class="hero-title">
-                    <span class="title-main">Bangun Dunia Digitalmu Bersama</span>
-                    <span class="title-brand">KING DS</span>
-                </h1>
-
-                <p class="hero-description">
-                    Solusi terpercaya untuk Premium Apps, Jasa Edit Video, Gift Starlight Mobile Legends,
-                    Bot WhatsApp, dan berbagai layanan digital lainnya dengan proses cepat, aman, dan praktis.
-                </p>
-
-                <div class="hero-buttons">
-                    <a href="#premium-apps" class="btn-primary">Lihat Premium Apps</a>
-                    <a href="#contact" class="btn-secondary">Hubungi Admin</a>
-                </div>
-            </div>
-
-            <!-- Hero Image -->
-            <div class="hero-image">
-                <span class="hero-shape shape-1"></span>
-                <span class="hero-shape shape-2"></span>
-                <span class="hero-shape shape-3"></span>
-                <span class="hero-shape shape-4"></span>
-                <span class="hero-shape shape-5"></span>
-                <span class="hero-shape shape-6"></span>
-                <span class="hero-shape shape-7"></span>
-                <span class="hero-shape shape-8"></span>
-                <span class="hero-shape shape-9"></span>
-
-                <img src="images/hero/kingds-character.png" alt="King DS Character" decoding="async">
+    <section class="hero hero-banner" id="home">
+        <div class="hero-banner-slider">
+            <img
+                src="images/hero/banner-aplikasi.png"
+                alt="Banner Aplikasi - King DS Store"
+                class="hero-banner-slide active"
+                decoding="async"
+            >
+            <img
+                src="images/hero/banner-layanan.png"
+                alt="Banner Layanan - King DS Store"
+                class="hero-banner-slide"
+                decoding="async"
+            >
+            <div class="hero-banner-dots">
+                <span class="hero-banner-dot active" data-slide="0"></span>
+                <span class="hero-banner-dot" data-slide="1"></span>
             </div>
         </div>
     </section>
@@ -350,7 +327,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/alightmotion.com" alt="Alight Motion logo" loading="lazy">
                     <h3>Alight Motion</h3>
-                    <span class="premium-card-price">Mulai Rp7.000</span>
                     
                     <a
                         href="#"
@@ -367,7 +343,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/canva.com" alt="Canva Pro logo" loading="lazy">
                     <h3>Canva Pro</h3>
-                    <span class="premium-card-price">Mulai Rp5.000</span>
                     
                     <a
                         href="#"
@@ -382,9 +357,8 @@
                 </div>
 
                 <div class="premium-card">
-                    <img class="premium-logo" src="https://logo.clearbit.com/capcut.com" alt="CapCut Pro logo" loading="lazy">
+                    <img class="premium-logo" src="images/products/logo-capcut.png" alt="CapCut Pro logo" loading="lazy">
                     <h3>CapCut Pro</h3>
-                    <span class="premium-card-price">Mulai Rp15.000</span>
 
                     <a
                         href="#"
@@ -401,7 +375,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/adobe.com" alt="Lightroom logo" loading="lazy">
                     <h3>Lightroom</h3>
-                    <span class="premium-card-price">Rp15.000</span>
 
                     <a
                         href="#"
@@ -418,7 +391,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/meitu.com" alt="Meitu logo" loading="lazy">
                     <h3>Meitu</h3>
-                    <span class="premium-card-price">Mulai Rp17.000</span>
                     
                     <a
                         href="#"
@@ -435,7 +407,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/photoroom.com" alt="PhotoRoom logo" loading="lazy">
                     <h3>PhotoRoom</h3>
-                    <span class="premium-card-price">Mulai Rp15.000</span>
                     
                     <a
                         href="#"
@@ -452,7 +423,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/picsart.com" alt="Picsart logo" loading="lazy">
                     <h3>Picsart</h3>
-                    <span class="premium-card-price">Rp10.000</span>
                     
                     <a
                         href="#"
@@ -469,7 +439,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/wink.ai" alt="Wink logo" loading="lazy">
                     <h3>Wink</h3>
-                    <span class="premium-card-price">Rp10.000</span>
 
                     <a
                         href="#"
@@ -491,7 +460,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/apple.com" alt="Apple Music logo" loading="lazy">
                     <h3>Apple Music</h3>
-                    <span class="premium-card-price">Mulai Rp10.000</span>
 
                     <a href="#" class="premium-order-btn" data-product="Apple Music" data-category="Premium Apps" data-price="Mulai Rp10.000"
                         data-description="Invite 1 Bulan — Rp10.000 | Famhead 1 Bulan — Rp20.000 | Akun seller / invite akun bisa dari pembeli.">
@@ -502,7 +470,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/bilibili.tv" alt="Bstation logo" loading="lazy">
                     <h3>Bstation</h3>
-                    <span class="premium-card-price">Mulai Rp10.000</span>
                     
                     <a href="#" class="premium-order-btn" data-product="Bstation" data-category="Premium Apps" data-price="Mulai Rp10.000"
                         data-description="Sharing 1 Bulan — Rp10.000 | Sharing 3 Bulan — Rp15.000 | Sharing 1 Tahun — Rp25.000 | Private 1 Bulan — Rp30.000 | Private 1 Tahun — Rp160.000">
@@ -513,7 +480,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/dramaboxapp.com" alt="Dramabox logo" loading="lazy">
                     <h3>Dramabox</h3>
-                    <span class="premium-card-price">Rp20.000</span>
 
                     <a href="#" class="premium-order-btn" data-product="Dramabox" data-category="Premium Apps" data-price="Rp20.000"
                         data-description="1 Bulan — Rp20.000 | Akun dari seller.">
@@ -524,7 +490,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/iq.com" alt="iQIYI logo" loading="lazy">
                     <h3>iQIYI</h3>
-                    <span class="premium-card-price">Mulai Rp10.000</span>
                     
                     <a href="#" class="premium-order-btn" data-product="iQIYI" data-category="Premium Apps" data-price="Mulai Rp10.000"
                         data-description="Sharing 1 Bulan — Rp10.000 | Sharing 1 Bulan Anti Limit — Rp20.000 | Sharing 1 Tahun — Rp25.000 | Private 1 Bulan — Rp33.000">
@@ -535,7 +500,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/loklok.com" alt="LokLok logo" loading="lazy">
                     <h3>LokLok</h3>
-                    <span class="premium-card-price">Mulai Rp20.000</span>
 
                     <a href="#" class="premium-order-btn" data-product="LokLok" data-category="Premium Apps" data-price="Mulai Rp20.000"
                         data-description="Basic 1 Bulan — Rp20.000 | Standar 1 Bulan — Rp25.000 | Basic tidak bisa login TV. Standar bisa login TV.">
@@ -546,7 +510,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/netflix.com" alt="Netflix logo" loading="lazy">
                     <h3>Netflix</h3>
-                    <span class="premium-card-price">Mulai Rp24.000</span>
 
                     <a href="#" class="premium-order-btn" data-product="Netflix" data-category="Premium Apps" data-price="Mulai Rp24.000"
                         data-description="1 Profil 1 User 1 Bulan — Rp40.000 | 1 Profil 2 User 1 Bulan — Rp24.000 | 2 Bulan & 3 Bulan tersedia | Akun seller. Detail screen limit akan dijelaskan saat order.">
@@ -557,7 +520,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/spotify.com" alt="Spotify logo" loading="lazy">
                     <h3>Spotify</h3>
-                    <span class="premium-card-price">Mulai Rp22.000</span>
 
                     <a href="#" class="premium-order-btn" data-product="Spotify" data-category="Premium Apps" data-price="Mulai Rp22.000"
                         data-description="1 Bulan — Rp22.000 | 2 Bulan — Rp35.000 | Legal paid. Bisa akun sendiri atau akun toko.">
@@ -568,7 +530,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/vidio.com" alt="Vidio logo" loading="lazy">
                     <h3>Vidio</h3>
-                    <span class="premium-card-price">Mulai Rp23.000</span>
                     
                     <a href="#" class="premium-order-btn" data-product="Vidio" data-category="Premium Apps" data-price="Mulai Rp23.000"
                         data-description="Platinum Sharing 1 Bulan — Rp25.000 | Platinum Private 1 Bulan — Rp50.000 | Mobile Sharing 1 Bulan — Rp23.000 | Mobile Private 1 Bulan — Rp40.000">
@@ -579,7 +540,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/viu.com" alt="Viu logo" loading="lazy">
                     <h3>Viu</h3>
-                    <span class="premium-card-price">Mulai Rp5.000</span>
                     
                     <a href="#" class="premium-order-btn" data-product="Viu" data-category="Premium Apps" data-price="Mulai Rp5.000"
                         data-description="1 Bulan — Rp5.000 | 2 Bulan — Rp7.000 | 3 Bulan — Rp10.000 | 6 Bulan — Rp12.000 | 1 Tahun — Rp15.000">
@@ -590,7 +550,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/youku.com" alt="Youku logo" loading="lazy">
                     <h3>Youku</h3>
-                    <span class="premium-card-price">Mulai Rp8.000</span>
                     
                     <a href="#" class="premium-order-btn" data-product="Youku" data-category="Premium Apps" data-price="Mulai Rp8.000"
                         data-description="Sharing 1 Bulan — Rp8.000 | Sharing 3 Bulan — Rp15.000 | Sharing 1 Tahun — Rp26.000 | Private 1 Bulan — Rp35.000">
@@ -601,7 +560,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/youtube.com" alt="YouTube Premium logo" loading="lazy">
                     <h3>YouTube Premium</h3>
-                    <span class="premium-card-price">Mulai Rp6.000</span>
 
                     <a href="#" class="premium-order-btn" data-product="YouTube Premium" data-category="Premium Apps" data-price="Mulai Rp6.000"
                         data-description="Individu akun seller — Rp12.000 | Individu akun buyer — Rp8.000 | Family head akun seller — Rp15.000 | Family head akun buyer — Rp13.000 | Invite family akun seller — Rp10.000 | Invite family akun buyer — Rp6.000 | Wajib email fresh / baru agar tidak ada verifikasi.">
@@ -617,7 +575,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/camscanner.com" alt="CamScanner Pro logo" loading="lazy">
                     <h3>CamScanner Pro</h3>
-                    <span class="premium-card-price">Mulai Rp8.000</span>
 
                     <a href="#" class="premium-order-btn" data-product="CamScanner Pro" data-category="Premium Apps" data-price="Mulai Rp8.000"
                         data-description="Sharing — Rp8.000 | Private — Rp15.000 | Durasi 1 bulan, akun dari seller.">
@@ -628,7 +585,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/camscanner.com" alt="CamScanner+ logo" loading="lazy">
                     <h3>CamScanner+</h3>
-                    <span class="premium-card-price">Rp20.000</span>
 
                     <a href="#" class="premium-order-btn" data-product="CamScanner+" data-category="Premium Apps" data-price="Rp20.000"
                         data-description="Lifetime — Rp20.000 | iOS only, bisa login akun sendiri, hapus watermark only.">
@@ -639,7 +595,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/ilovepdf.com" alt="I Love PDF logo" loading="lazy">
                     <h3>I Love PDF</h3>
-                    <span class="premium-card-price">Rp8.000</span>
 
                     <a href="#" class="premium-order-btn" data-product="I Love PDF" data-category="Premium Apps" data-price="Rp8.000"
                         data-description="Private 1 Minggu — Rp8.000 | Akun dari seller.">
@@ -650,7 +605,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/scribd.com" alt="Scribd logo" loading="lazy">
                     <h3>Scribd</h3>
-                    <span class="premium-card-price">Mulai Rp10.000</span>
                     
                     <a href="#" class="premium-order-btn" data-product="Scribd" data-category="Premium Apps" data-price="Mulai Rp10.000"
                         data-description="Sharing 1 Bulan — Rp10.000 | Private 1 Bulan — Rp15.000">
@@ -661,7 +615,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/zoom.us" alt="Zoom logo" loading="lazy">
                     <h3>Zoom</h3>
-                    <span class="premium-card-price">Mulai Rp15.000</span>
                     
                     <a href="#" class="premium-order-btn" data-product="Zoom" data-category="Premium Apps" data-price="Mulai Rp15.000"
                         data-description="Private 100p 2 Minggu — Rp15.000 | Private 100p 1 Bulan — Rp25.000">
@@ -677,7 +630,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/openai.com" alt="ChatGPT logo" loading="lazy">
                     <h3>ChatGPT</h3>
-                    <span class="premium-card-price">Mulai Rp10.000</span>
 
                     <a href="#" class="premium-order-btn" data-product="ChatGPT" data-category="Premium Apps" data-price="Mulai Rp10.000"
                         data-description="Sharing 1 Bulan — Rp10.000 | Langganan Go Sharing 1 Bulan — Rp40.000 | Menggunakan akun dari seller.">
@@ -688,7 +640,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/google.com" alt="Gemini AI logo" loading="lazy">
                     <h3>Gemini AI</h3>
-                    <span class="premium-card-price">Mulai Rp15.000</span>
 
                     <a href="#" class="premium-order-btn" data-product="Gemini AI" data-category="Premium Apps" data-price="Mulai Rp15.000"
                         data-description="Buyer / akun private — Rp15.000 | Seller / akun private — Rp25.000 | Full akses 1 bulan, wajib email fresh / baru, garansi.">
@@ -699,7 +650,6 @@
                 <div class="premium-card">
                     <img class="premium-logo" src="https://logo.clearbit.com/x.ai" alt="Grok AI logo" loading="lazy">
                     <h3>Grok AI</h3>
-                    <span class="premium-card-price">Rp25.000</span>
 
                     <a href="#" class="premium-order-btn" data-product="Grok AI" data-category="Premium Apps" data-price="Rp25.000"
                         data-description="1 Bulan — Rp25.000 | Langganan SuperGrok, sharing, akun dari seller, stok terbatas.">

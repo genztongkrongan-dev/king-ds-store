@@ -654,19 +654,63 @@ header{
    HERO
 ========================= */
 .hero{
-    padding: 70px 20px 80px;
+    padding: 0;
     overflow: hidden;
 }
 
+.hero-banner{
+    padding: 0;
+}
+
 .hero::before{
-    content: "";
+    content: none;
+}
+
+.hero-banner-slider{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 640px;
+    overflow: hidden;
+}
+
+.hero-banner-slide{
     position: absolute;
     inset: 0;
-    background:
-        radial-gradient(circle at 18% 28%, rgba(0,198,255,0.18), transparent 24%),
-        radial-gradient(circle at 82% 25%, rgba(30,144,255,0.16), transparent 22%),
-        radial-gradient(circle at 70% 75%, rgba(15,91,216,0.14), transparent 24%);
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.hero-banner-slide.active{
+    opacity: 1;
+}
+
+.hero-banner-dots{
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.hero-banner-dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    border: 1px solid rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.hero-banner-dot.active{
+    background: var(--blue-3);
+    transform: scale(1.2);
 }
 
 .hero-container{
@@ -1145,14 +1189,6 @@ header{
     color: var(--white);
     font-family: var(--font-heading);
     font-size: 1.2rem;
-}
-
-.premium-card-price{
-    display: block;
-    margin: -8px 0 16px;
-    color: var(--blue-3);
-    font-weight: 700;
-    font-size: 0.95rem;
 }
 
 .premium-card ul{
@@ -2372,7 +2408,7 @@ header{
     }
 
     .hero{
-        padding: 50px 16px 70px;
+        padding: 0;
     }
 
     .hero-subtitle{
@@ -3238,7 +3274,7 @@ header,
        teks kiri + gambar kanan sejajar (kotak memanjang),
        BUKAN ditumpuk ke bawah, dibuat ringkas */
     .hero {
-        padding: 78px 0 14px;
+        padding: 0;
         overflow: hidden;
         min-height: unset;
     }
@@ -3618,7 +3654,7 @@ header,
 ========================= */
 @media (max-width: 480px) {
     .hero {
-        padding-top: 74px;
+        padding-top: 0;
     }
 
     .hero-container {
@@ -3914,11 +3950,12 @@ body.light-mode .img-skeleton{
 ========================= */
 .premium-logo{
     display: block;
-    width: 46px;
-    height: 46px;
-    margin-bottom: 14px;
-    padding: 8px;
-    border-radius: 14px;
+    width: 100%;
+    max-width: 110px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto 16px;
+    padding: 16px;
+    border-radius: 22px;
     background: #ffffff;
     object-fit: contain;
     box-shadow: 0 8px 18px rgba(0,0,0,0.25);
@@ -3927,15 +3964,15 @@ body.light-mode .img-skeleton{
 .premium-card{
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 @media (max-width: 768px){
     .premium-logo{
-        width: 36px;
-        height: 36px;
-        margin-bottom: 10px;
-        padding: 6px;
-        border-radius: 10px;
+        max-width: 84px;
+        margin-bottom: 12px;
+        padding: 12px;
+        border-radius: 16px;
     }
 }
 

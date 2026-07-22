@@ -883,3 +883,40 @@ if (themeToggle) {
         localStorage.setItem("kingds-theme", nextTheme);
     });
 }
+/* =========================
+   HERO BANNER SLIDER
+========================= */
+(function () {
+    const slides = document.querySelectorAll(".hero-banner-slide");
+    const dots = document.querySelectorAll(".hero-banner-dot");
+
+    if (!slides.length) return;
+
+    let current = 0;
+    let timer = null;
+
+    function goToSlide(index) {
+        slides.forEach(slide => slide.classList.remove("active"));
+        dots.forEach(dot => dot.classList.remove("active"));
+
+        current = (index + slides.length) % slides.length;
+
+        slides[current].classList.add("active");
+        if (dots[current]) dots[current].classList.add("active");
+    }
+
+    function startAutoSlide() {
+        clearInterval(timer);
+        timer = setInterval(() => goToSlide(current + 1), 5000);
+    }
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener("click", () => {
+            goToSlide(i);
+            startAutoSlide();
+        });
+    });
+
+    goToSlide(0);
+    startAutoSlide();
+})();
